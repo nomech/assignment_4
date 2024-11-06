@@ -1,0 +1,135 @@
+/* This file contains standardized sizes */
+/* this file resetes and sets default values globally */
+
+/* This file contains all the fonts, I've opted to use them locally since using google fonts will make the site breach GDPR */
+/* Source:https://thehackernews.com/2022/01/german-court-rules-websites-embedding.html */
+/* https://rewis.io/urteile/urteil/lhm-20-01-2022-3-o-1749320/ */
+/* LG München, Urteil vom 20.01.2022, Az. 3 O 17493/20 (REWIS RS 2022, 1892)*/
+
+@import "./_fonts.css";
+@font-face {
+  font-family: "Roboto";
+  src: url("../assets/fonts/Roboto-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../assets/fonts/Roboto-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../assets/fonts/Roboto-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../assets/fonts/Roboto-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../assets/fonts/Roboto-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html {
+  height: 100vh;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+.page-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 90px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #c8c8c8;
+}
+
+.page-header__nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #fff5f5;
+}
+
+main {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.components {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  width: 320px;
+  height: 100%;
+  border-right: 1px solid #c8c8c8;
+  border-radius: 6px;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
+  padding: 40px 0;
+}
+
+.components__list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 32px;
+  width: 216px;
+}
+
+.components__item{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.components__item-title {
+  border-radius: 6px;
+  background: #d9d9d9;
+  padding: 2px 16px;
+}
+.components__sublist {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  list-style: none;
+}
+
+.components__subitem {
+  border-radius: 6px;
+  background: #f4f4f4;
+  padding: 2px 16px;
+}
+.components-details {
+  align-self: center;
+  background-color: #ffffff;
+  width: 1200px;
+  height: 630px;
+  border: 1px solid #c8c8c8;
+  border-radius: 24px;
+}
