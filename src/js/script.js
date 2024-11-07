@@ -1,13 +1,19 @@
-const test = document.querySelector(".tester");
-console.log("test");
+const drawerButton = document.querySelector(".components__drawer-button");
+const chevron = document.querySelector(".components__drawer-chevron");
 
 const components = document.querySelector(".components");
 const componentsList = document.querySelector(".components-list");
 const componentsSublist = document.querySelector(".components-sublist");
 
 
-test.addEventListener("click", function() {
-    components.classList.toggle("test")
-    componentsList.classList.toggle("test")
-    componentsSublist.classList.toggle("test")
+drawerButton.addEventListener("click", function() {
+
+    chevron.classList.toggle("components__drawer-chevron");
+    chevron.classList.toggle("components__drawer-chevron--rotated");
+});
+
+const search = document.querySelector(".page-header__search");
+
+search.addEventListener('blur', function() {
+  search.value = '';
 });
