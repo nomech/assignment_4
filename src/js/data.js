@@ -3,7 +3,7 @@ export const data = [
     title: "Components",
     components: [
       {
-        data: "Buttons",
+        component: "Buttons",
         types: [
           {
             type: "Primary",
