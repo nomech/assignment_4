@@ -61,8 +61,8 @@ html {
   border-bottom: 1px solid #c8c8c8;
 }
 
-.page-header__nav svg{
-    width: 72px;
+.page-header__nav svg {
+  width: 72px;
 }
 
 .page-header__search-box {
@@ -93,16 +93,15 @@ html {
   pointer-events: none;
 }
 
-
 .page-header__search {
-    width: 48px;
-    height: 48px;
-    margin: 6px;
-    border: 1px solid grey;
-    transition: width 0.5s ease;
-    border-radius: 24px;
-    padding: 0 12px;
-    font-size: 18px;
+  width: 48px;
+  height: 48px;
+  margin: 6px;
+  border: 1px solid grey;
+  transition: width 0.5s ease;
+  border-radius: 24px;
+  padding: 0 12px;
+  font-size: 18px;
 }
 
 .page-header__search:hover {
@@ -114,13 +113,13 @@ html {
   border: 1px solid black;
 }
 
-.page-header__nav-right{
-    display: flex;
-    align-items: center;
-    gap: 16px;
+.page-header__nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
-.page-header__user  {
+.page-header__user {
   width: 44px;
   height: 44px;
 }
@@ -144,46 +143,64 @@ main {
   align-items: center;
   background-color: #ffffff;
   width: 320px;
-  height: 100%;
+  height: 90vh;
   border-right: 1px solid #c8c8c8;
   border-radius: 6px;
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
-  padding: 40px 0;
-  transition: width 0.5s ease;
+  padding: 20px 0;
+  transition: width 0.5s;
 }
 
-.components * {
-  transition: width 0.5s ease;
+.components__chevron {
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff;
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 2px;
+  cursor: pointer;
+  transition: transform 0.3s;
+  transform: rotate(180deg);
 }
 
+.components__chevron--rotated {
+  
+  transform: rotate(270deg)  
+}
+.components__title-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 6px;
+  background: #d9d9d9;
+  padding: 10px 16px;
+  width: 224px;
+}
 .components__list {
   display: flex;
   flex-direction: column;
   list-style: none;
-  gap: 32px;
-  width: 216px;
-  transition: width 0.5s ease;
-  overflow: hidden;
+  overflow: scroll;
+  width: 100%;
 }
 
 .components__item {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  transition: width 0.5s ease;
+  gap: 10px;
+  padding: 4px 48px;
 }
 
-.components__item-title {
-  border-radius: 6px;
-  background: #d9d9d9;
-  padding: 2px 16px;
-}
 .components__sublist {
   display: flex;
   flex-direction: column;
+  width: 200px;
   gap: 16px;
   list-style: none;
-  transition: width 0.5s ease;
+  overflow: hidden;
+  height: 0;
+  transition: height 0.5s ease;
 }
 
 .components__subitem {
@@ -200,21 +217,32 @@ main {
 }
 
 .components-details {
+  display: flex;
+  justify-content: center;
   flex-grow: 1;
   align-self: center;
-  height: 600px;
-  background-color: #ffffff;
+  height: 750px;
+  overflow: scroll;
+}
+.components-details__canvas {
+  width: 600px;
+  width: 100%;
   border: 1px solid #c8c8c8;
+  margin: 48px;
+  padding: 28px;
   border-radius: 24px;
-  margin: 55px;
 }
 
-.test {
+.components__drawer-chevron--rotated {
+  transform: rotate(270deg);
+}
+
+.components__title-group .open {
+  transform: rotate(270deg);
+}
+
+.retracted {
   width: 10px;
-}
-
-.test .components__list {
-  width: 0px;
 }
 
 .components__drawer-button {
@@ -232,8 +260,8 @@ main {
   height: 28px;
   cursor: pointer;
 }
-.components__drawer-button:hover > .components__drawer-chevron{
-    animation: nudge 0.5s infinite;
+.components__drawer-button:hover > .components__drawer-chevron {
+  animation: nudge 0.5s infinite;
 }
 
 .components__drawer-button img {
@@ -241,13 +269,12 @@ main {
   height: 18px;
 }
 
-.components__drawer-chevron--rotated{
+.components__drawer-chevron--rotated {
   transform: rotate(180deg);
 }
 
-.components__drawer-button:hover > .components__drawer-chevron--rotated{
-    animation: nudgeRotated 0.5s infinite;
-
+.components__drawer-button:hover > .components__drawer-chevron--rotated {
+  animation: nudgeRotated 0.5s infinite;
 }
 
 @keyframes nudge {
@@ -263,13 +290,13 @@ main {
 }
 
 @keyframes nudgeRotated {
-    0% {
-        transform: translateX(0) rotate(180deg);
-      }
-      50% {
-        transform: translateX(2px) rotate(180deg);
-      }
-      100% {
-        transform: translateX(0) rotate(180deg);
-      }
+  0% {
+    transform: translateX(0) rotate(180deg);
+  }
+  50% {
+    transform: translateX(2px) rotate(180deg);
+  }
+  100% {
+    transform: translateX(0) rotate(180deg);
+  }
 }

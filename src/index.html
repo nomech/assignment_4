@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <script src="./js/script.js" defer></script>
+    <script type="module" src="./js/data.js"></script>
+    <script type="module"  src="./js/script.js" defer></script>
+
     <title>Document</title>
 </head>
 
@@ -20,10 +22,8 @@
             <h1 class="page-header__title">
                 noMech Design System
             </h1>
-
             <div class="page-header__nav-right">
                 <div class="page-header__search-box">
-
                     <input type="text" class="page-header__search" placeholder="">
                     <svg xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -43,9 +43,15 @@
         <section class="components">
             <button class="components__drawer-button"><img src="./assets/icons/chevron-lsolid.svg" alt=""
                     class="components__drawer-chevron"></button>
+
+
             <ul class="components__list">
                 <li class="components__item">
-                    <h3 class="components__item-title">Accordion</h3>
+                    <div class="components__title-group">
+                        <h3 class="components__item-title">Accordion</h3>
+                        <img src="./assets/icons/chevron-lsolid.svg" alt="" class="components__chevron">
+                    </div>
+
                     <ul class="components__sublist">
                         <li class="components__subitem">
                             Button
@@ -57,39 +63,35 @@
                             Button
                         </li>
                     </ul>
+
                 </li>
+
+
+
                 <li class="components__item">
-                    <h3 class="components__item-title">Accordion</h3>
+                    <div class="components__title-group">
+                        <h3 class="components__item-title">Accordion</h3>
+                        <img src="./assets/icons/chevron-lsolid.svg" alt="" class="components__chevron">
+                    </div>
                     <ul class="components__sublist">
                         <li class="components__subitem">
-                            <a href="./components/button.html">Button</a>
+                            Button
                         </li>
                         <li class="components__subitem">
-                            <a href="./components/button.html">Button</a>
+                            Button
                         </li>
                         <li class="components__subitem">
-                            <a href="./components/button.html">Button</a>
+                            Button
                         </li>
                     </ul>
-                </li>
-                <li class="components__item">
-                    <h3 class="components__item-title">Accordion</h3>
-                    <ul class="components__sublist">
-                        <li class="components__subitem">
-                            <a href="./components/button.html">Button</a>
-                        </li>
-                        <li class="components__subitem">
-                            <a href="./components/button.html">Button</a>
-                        </li>
-                        <li class="components__subitem">
-                            <a href="./components/button.html">Button</a>
-                        </li>
-                    </ul>
-                </li>
+                </li> 
+ 
             </ul>
         </section>
         <section class="components-details">
+            <div class="components-details__canvas">
 
+            </div>
         </section>
     </main>
     <footer>
