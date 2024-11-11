@@ -6,19 +6,19 @@ const chevron = document.querySelector(".components__drawer-chevron");
 const components = document.querySelector(".components");
 const componentsList = document.querySelector(".components__list");
 const search = document.querySelector(".page-header__search");
+const componentCanvas = document.querySelector(".component-canvas");
+const canvas = document.querySelector(".components-details__canvas");
 
 const collapseComponents = (e) => {
   let children = e.currentTarget.children;
   let subListTarget = e.currentTarget.nextSibling;
   const openClass = "components__sublist--open";
-  
+
   for (let child of children) {
     if (child.classList.contains("components__chevron")) {
       child.classList.toggle("components__chevron--rotated");
     }
   }
-
-  
 
   if (subListTarget.classList.contains(openClass)) {
     subListTarget.classList.toggle(openClass);
@@ -67,13 +67,29 @@ const createListItem = (item) => {
   item.components.forEach((component) => {
     createSubListItems(subList, component);
   });
-  
-  subList.style.height = `${subList.scrollHeight}px`
+
+  subList.style.height = `${subList.scrollHeight}px`;
   titleGroup.addEventListener("click", collapseComponents);
 };
 
 data.forEach((item) => {
   createListItem(item);
+  console.log(item)
+  item.components.forEach((element) => {
+  const component = document.createElement("div");
+  component.classList.add("components-details__component");
+  canvas.appendChild(component);
+
+  const componentTitle = document.createElement("h3");
+  componentTitle.classList.add("components-details__title");
+  componentTitle.textContent = element.component;
+  component.appendChild(componentTitle);
+
+  const componentDescription = document.createElement("p");
+  componentDescription.classList.add("components-details__description");
+  componentDescription.textContent = element.description;
+  component.appendChild(componentDescription);
+  })
 });
 
 const triggerDrawer = () => {

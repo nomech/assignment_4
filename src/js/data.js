@@ -3,7 +3,9 @@ export const data = [
     title: "Components",
     components: [
       {
+        id: 1,
         component: "Buttons",
+        description:"Buttons are used to trigger actions on a page.",
         types: [
           {
             type: "Primary",
@@ -33,7 +35,9 @@ export const data = [
         ],
       },
       {
+        id: 2,
         component: "Inputs",
+        description:"Inputs are used to collect data on a page.",
         types: [
           {
             type: "Text",
@@ -58,7 +62,9 @@ export const data = [
         ],
       },
       {
+        id: 3,
         component: "Cards",
+        description:"Cards are used to display content on a page.",
         types: [
           {
             type: "Primary",
@@ -75,7 +81,9 @@ export const data = [
         ],
       },
       {
+        id: 4,
         component: "Modals",
+        description:"Modals are used to display content on a page.",
         types: [
           {
             type: "Primary",

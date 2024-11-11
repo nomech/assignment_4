@@ -163,7 +163,6 @@ main {
   transform: rotate(270deg);
 }
 
-
 .components__chevron {
   transition: transform 0.3s;
 }
@@ -244,10 +243,8 @@ main {
 .components-details__canvas {
   width: 600px;
   width: 100%;
-  border: 1px solid #c8c8c8;
   margin: 48px;
   padding: 28px;
-  border-radius: 24px;
 }
 
 .components__drawer-chevron--rotated {
@@ -312,4 +309,38 @@ main {
   100% {
     transform: translateX(0) rotate(180deg);
   }
+}
+
+.components-details__canvas {
+  display: flex;
+  align-items: flex-start;
+}
+
+.components-details__component {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #c8c8c8;;
+  border-radius: 13px;
+  padding: 0 0 16px 0;
+  background-color: #ffffff;
+}
+
+.components-details__title {
+  background-color: grey;
+  color: white;
+  padding: 12px;
+  border-radius: 12px 12px 0 0;
+}
+
+.components-details__description {
+  padding: 12px;
+}
+
+.components-details__button {
+  align-self: center;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 12px;
+  background-color: rgb(92, 92, 92);
+  color: #ffffff;
 }
