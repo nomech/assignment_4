@@ -1,18 +1,17 @@
 export const data = [
   {
     title: "Components",
-    components: [
+    data: [
       {
         id: "1",
         component: "Buttons",
-        description:"Buttons are used to trigger actions on a page.",
+        description: "Buttons are used to trigger actions on a page.",
         types: [
           {
             type: "Primary",
             description:
               "The primary button is used to indicate the main action on a page.",
             code: `<button class="button button--primary">Primary</button>`,
-            size: ["Small", "Medium", "Large"],
           },
           {
             type: "Secondary",
@@ -33,11 +32,12 @@ export const data = [
             code: `<button class="button button--disabled" disabled>Disabled</button>`,
           },
         ],
+        size: ["Small", "Medium", "Large"],
       },
       {
         id: "2",
         component: "Inputs",
-        description:"Inputs are used to collect data on a page.",
+        description: "Inputs are used to collect data on a page.",
         types: [
           {
             type: "Text",
@@ -64,7 +64,7 @@ export const data = [
       {
         id: "3",
         component: "Cards",
-        description:"Cards are used to display content on a page.",
+        description: "Cards are used to display content on a page.",
         types: [
           {
             type: "Primary",
@@ -83,7 +83,7 @@ export const data = [
       {
         id: "4",
         component: "Modals",
-        description:"Modals are used to display content on a page.",
+        description: "Modals are used to display content on a page.",
         types: [
           {
             type: "Primary",
@@ -100,5 +100,18 @@ export const data = [
         ],
       },
     ],
-  }
+  },
+  {
+    title: "Layouts",
+    data: [
+      {
+        id: "5",
+        component: "Placeholder",
+        description: "Placeholder description",
+        types: [
+        ],
+        size: ["Small", "Medium", "Large"],
+      },
+    ],
+  },
 ];

@@ -10,6 +10,8 @@ const sidebarList = document.querySelector(".sidebar__list");
 const search = document.querySelector(".page-header__search");
 const canvas = document.querySelector(".component-details__canvas");
 const resultsBox = document.querySelector(".component-details__results");
+const logo = document.querySelector(".page-header__logo");
+let initilized = false;
 
 const collapseComponents = (e) => {
   let children = e.currentTarget.children;
@@ -75,23 +77,24 @@ const showComponentDetails = (event) => {
   let id = event.currentTarget.id;
 
   console.log(event);
-  data[0].components.forEach((component) => {
+  data[0].data.forEach((component) => {
     if (component.id === id) {
       createComponentDetails(component);
     }
   });
 };
 
-const createSubListItems = (parent, component) => {
+const createSubListItems = (parent, data) => {
   const subListItem = document.createElement("li");
   subListItem.classList.add("sidebar__subitem");
-  subListItem.id = component.id;
-  subListItem.textContent = component.component;
+  subListItem.id = data.id;
+  subListItem.textContent = data.component;
   subListItem.addEventListener("click", showComponentDetails);
   parent.appendChild(subListItem);
 };
 
 const createListItem = (item) => {
+  console.log(item);
   const listItem = document.createElement("li");
   listItem.classList.add("sidebar__item");
   sidebarList.appendChild(listItem);
@@ -117,7 +120,7 @@ const createListItem = (item) => {
 
   listItem.appendChild(subList);
 
-  item.components.forEach((component) => {
+  item.data.forEach((component) => {
     createSubListItems(subList, component);
   });
 
@@ -125,26 +128,38 @@ const createListItem = (item) => {
   titleGroup.addEventListener("click", collapseComponents);
 };
 
-data.forEach((item) => {
-  createListItem(item);
-  item.components.forEach((element) => {
-    const component = document.createElement("div");
-    component.classList.add("component-details__component");
-    component.id = element.id;
-    component.addEventListener("click", showComponentDetails);
-    canvas.appendChild(component);
+const initilizeDOM = () => {
+  data.forEach((item) => {
+    if (!initilized) {
+      createListItem(item);
+    }
+    item.data.forEach((element) => {
+      const component = document.createElement("div");
+      component.classList.add("component-details__component");
+      component.id = element.id;
+      component.addEventListener("click", showComponentDetails);
+      canvas.appendChild(component);
 
-    const componentTitle = document.createElement("h3");
-    componentTitle.classList.add("component-details__title");
-    componentTitle.textContent = element.component;
-    component.appendChild(componentTitle);
+      const componentTitle = document.createElement("h3");
+      componentTitle.classList.add("component-details__title");
+      componentTitle.textContent = element.component;
+      component.appendChild(componentTitle);
 
-    const componentDescription = document.createElement("p");
-    componentDescription.classList.add("component-details__description");
-    componentDescription.textContent = element.description;
-    component.appendChild(componentDescription);
+      const componentDescription = document.createElement("p");
+      componentDescription.classList.add("component-details__description");
+      componentDescription.textContent = element.description;
+      component.appendChild(componentDescription);
+    });
   });
-});
+  initilized = true;
+};
+
+const reinitilizaDOM = () => {
+  canvas.innerHTML = "";
+  initilizeDOM();
+};
+
+logo.addEventListener("click", reinitilizaDOM);
 
 const triggerDrawer = () => {
   sidebar.classList.toggle("sidebar--retracted");
@@ -185,7 +200,7 @@ const performSearch = (input) => {
 
     const resultsTitle = document.createElement("h3");
     resultsTitle.classList.add("component-details__result-title");
-    resultsTitle.textContent = result.component;
+    resultsTitle.textContent = result.data;
     resultsItem.appendChild(resultsTitle);
   });
 };
@@ -194,3 +209,5 @@ search.addEventListener("input", (e) => {
   let value = e.target.value;
   performSearch(value);
 });
+
+initilizeDOM();
