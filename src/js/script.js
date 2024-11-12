@@ -9,7 +9,7 @@ const sidebar = document.querySelector(".sidebar");
 const sidebarList = document.querySelector(".sidebar__list");
 const search = document.querySelector(".page-header__search");
 const canvas = document.querySelector(".component-details__canvas");
-const resultsBox = document.querySelector(".component-details__results");
+const resultsBox = document.querySelector(".page-header__search-results");
 const logo = document.querySelector(".page-header__logo");
 let initilized = false;
 
@@ -168,6 +168,7 @@ const triggerDrawer = () => {
 
 const onUnfocusSearch = () => {
   setTimeout(() => {
+    resultsBox.classList.remove("page-header__search-results--show")
     search.value = "";
     resultsBox.innerHTML = "";
   }, 200);
@@ -177,11 +178,12 @@ search.addEventListener("blur", onUnfocusSearch);
 drawerButton.addEventListener("click", triggerDrawer);
 
 const performSearch = (input) => {
-  let results = [];
 
+  let results = [];
+  
   if (input.length > 0) {
     data.forEach((item) => {
-      item.components.forEach((component) => {
+      item.data.forEach((component) => {
         if (component.component.toLowerCase().includes(input)) {
           results.push(component);
         }
@@ -189,8 +191,11 @@ const performSearch = (input) => {
     });
   }
 
+
   resultsBox.innerHTML = "";
+  resultsBox.classList.add("page-header__search-results--show")
   results.forEach((result) => {
+
     const resultsItem = document.createElement("div");
     resultsItem.classList.add("component-details__result-item");
     resultsItem.id = result.id;
@@ -200,7 +205,7 @@ const performSearch = (input) => {
 
     const resultsTitle = document.createElement("h3");
     resultsTitle.classList.add("component-details__result-title");
-    resultsTitle.textContent = result.data;
+    resultsTitle.textContent = result.component;
     resultsItem.appendChild(resultsTitle);
   });
 };
@@ -209,5 +214,14 @@ search.addEventListener("input", (e) => {
   let value = e.target.value;
   performSearch(value);
 });
+
+const searchOnEnter = (e) => {
+  if (e.key === "Enter") {
+    
+  }
+};
+
+
+search.addEventListener("keypress", searchOnEnter);
 
 initilizeDOM();

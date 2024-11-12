@@ -55,11 +55,35 @@
   .page-header__search:hover {
     border: 2px solid black;
   }
-  
-  .page-header__search:focus {
-    width: 400px;
-    border: 1px solid black;
+
+  .page-header__search-results {
+    position: absolute;
+    left: 30px;
+    top: 52px;
+    width: 0px;
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: #ffffff;
+    border-radius: 6px;
+    z-index: 10;
   }
+
+  .page-header__search-results--show {
+    width: 80%;
+    border: 1px solid #c8c8c8;
+  }
+  
+  .page-header__search:focus{
+    width: 400px;
+    border: 2px solid #c8c8c8;
+    outline: none;
+  }
+
+  .page-header__search:focus {
+    outline: none;
+  }
+
+
   
   .page-header__search-icon {
     width: 18px;
@@ -69,6 +93,8 @@
     transition: margin 0.5s ease;
     pointer-events: none;
   }
+
+ 
   
   .page-header__user {
     width: 44px;

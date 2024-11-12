@@ -33,7 +33,7 @@
   }
   
   .component-details__component-title {
-    background-color: grey;
+    background-color: #c8c8c8;
     color: white;
     padding: 12px;
     border-radius: 12px 12px 0 0;
@@ -78,18 +78,7 @@
     font-family: monospace;
   }
   
-  .component-details__results {
-    position: absolute;
-    left: 0;
-    top: 53px;
-    width: 100%;
-    max-height: 300px;
-    overflow-y: auto;
-    background-color: #ffffff;
-    border: 1px solid #c8c8c8;
-    border-radius: 6px;
-    z-index: 10;
-  }
+ 
   
   .component-details__result-item {
     padding: 12px;
