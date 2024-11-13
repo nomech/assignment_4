@@ -4,14 +4,13 @@ import { data } from "./data.js";
 
 const drawerButton = document.querySelector(".sidebar__drawer-button");
 const chevron = document.querySelector(".sidebar__drawer-button-icon");
-
 const sidebar = document.querySelector(".sidebar");
 const sidebarList = document.querySelector(".sidebar__list");
 const search = document.querySelector(".page-header__search");
 const canvas = document.querySelector(".component-details__canvas");
 const resultsBox = document.querySelector(".page-header__search-results");
 const logo = document.querySelector(".page-header__logo");
-let initilized = false;
+let initialized = false;
 
 const collapseComponents = (e) => {
   let children = e.currentTarget.children;
@@ -73,10 +72,11 @@ const createComponentDetails = (component) => {
   });
 };
 
-const showComponentDetails = (event) => {
-  let id = event.currentTarget.id;
+const showComponentDetails = (target) => {
+  console.log(target);
+  let id = target.dataset.id;
+  console.log(id);
 
-  console.log(event);
   data[0].data.forEach((component) => {
     if (component.id === id) {
       createComponentDetails(component);
@@ -87,14 +87,12 @@ const showComponentDetails = (event) => {
 const createSubListItems = (parent, data) => {
   const subListItem = document.createElement("li");
   subListItem.classList.add("sidebar__subitem");
-  subListItem.id = data.id;
+  subListItem.dataset.id = data.id;
   subListItem.textContent = data.component;
-  subListItem.addEventListener("click", showComponentDetails);
   parent.appendChild(subListItem);
 };
 
 const createListItem = (item) => {
-  console.log(item);
   const listItem = document.createElement("li");
   listItem.classList.add("sidebar__item");
   sidebarList.appendChild(listItem);
@@ -122,22 +120,32 @@ const createListItem = (item) => {
 
   item.data.forEach((component) => {
     createSubListItems(subList, component);
+
+    subList.addEventListener("click", (e) => {
+      if (e.target.classList.contains("sidebar__subitem")) {
+        let target = e.target;
+        showComponentDetails(target);
+      }
+    });
   });
 
   subList.style.height = `${subList.scrollHeight}px`;
   titleGroup.addEventListener("click", collapseComponents);
 };
 
-const initilizeDOM = () => {
+const initializeDOM = () => {
   data.forEach((item) => {
-    if (!initilized) {
+    if (!initialized) {
       createListItem(item);
     }
     item.data.forEach((element) => {
       const component = document.createElement("div");
       component.classList.add("component-details__component");
-      component.id = element.id;
-      component.addEventListener("click", showComponentDetails);
+      component.dataset.id = element.id;
+      component.addEventListener("click", (e)=>{
+        let target = e.currentTarget;
+        showComponentDetails(target)
+      });
       canvas.appendChild(component);
 
       const componentTitle = document.createElement("h3");
@@ -151,15 +159,15 @@ const initilizeDOM = () => {
       component.appendChild(componentDescription);
     });
   });
-  initilized = true;
+  initialized = true;
 };
 
-const reinitilizaDOM = () => {
+const reinitializeDOM = () => {
   canvas.innerHTML = "";
-  initilizeDOM();
+  initializeDOM();
 };
 
-logo.addEventListener("click", reinitilizaDOM);
+logo.addEventListener("click", reinitializeDOM);
 
 const triggerDrawer = () => {
   sidebar.classList.toggle("sidebar--retracted");
@@ -168,7 +176,7 @@ const triggerDrawer = () => {
 
 const onUnfocusSearch = () => {
   setTimeout(() => {
-    resultsBox.classList.remove("page-header__search-results--show")
+    resultsBox.classList.remove("page-header__search-results--show");
     search.value = "";
     resultsBox.innerHTML = "";
   }, 200);
@@ -178,9 +186,8 @@ search.addEventListener("blur", onUnfocusSearch);
 drawerButton.addEventListener("click", triggerDrawer);
 
 const performSearch = (input) => {
-
   let results = [];
-  
+
   if (input.length > 0) {
     data.forEach((item) => {
       item.data.forEach((component) => {
@@ -191,16 +198,17 @@ const performSearch = (input) => {
     });
   }
 
-
   resultsBox.innerHTML = "";
-  resultsBox.classList.add("page-header__search-results--show")
+  resultsBox.classList.add("page-header__search-results--show");
   results.forEach((result) => {
-
     const resultsItem = document.createElement("div");
     resultsItem.classList.add("component-details__result-item");
-    resultsItem.id = result.id;
+    resultsItem.dataset.id = result.id;
 
-    resultsItem.addEventListener("click", showComponentDetails);
+    resultsItem.addEventListener("click", (e) => {
+      let target = e.currentTarget;
+      showComponentDetails(target);
+    });
     resultsBox.appendChild(resultsItem);
 
     const resultsTitle = document.createElement("h3");
@@ -217,11 +225,9 @@ search.addEventListener("input", (e) => {
 
 const searchOnEnter = (e) => {
   if (e.key === "Enter") {
-    
   }
 };
 
-
 search.addEventListener("keypress", searchOnEnter);
 
-initilizeDOM();
+initializeDOM();
