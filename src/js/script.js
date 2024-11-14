@@ -12,6 +12,19 @@ const resultsBox = document.querySelector(".page-header__search-results");
 const logo = document.querySelector(".page-header__logo");
 let initialized = false;
 
+const createTextElement = (tag, className, text) => {
+  const element = document.createElement(tag);
+  element.classList.add(className);
+  element.innerText = text;
+  return element;
+}
+
+const createDivElement = (className) => {
+  const element = document.createElement("div");
+  element.classList.add(className);
+  return element; 
+}
+
 const collapseComponents = (e) => {
   let children = e.currentTarget.children;
   let subListTarget = e.currentTarget.nextSibling;
@@ -36,18 +49,13 @@ const collapseComponents = (e) => {
 
 const createComponentDetails = (component) => {
   canvas.innerHTML = "";
-  const componentDetails = document.createElement("div");
-  componentDetails.classList.add("component-details__component");
+  const componentDetails = createDivElement("component-details__component");
   canvas.appendChild(componentDetails);
 
-  const componentTitle = document.createElement("h3");
-  componentTitle.classList.add("component-details__component-title");
-  componentTitle.textContent = component.component;
+  const componentTitle = createTextElement("h3", "component-details__component-title", component.component);
   componentDetails.appendChild(componentTitle);
 
-  const componentDescription = document.createElement("p");
-  componentDescription.classList.add("component-details__description");
-  componentDescription.textContent = component.description;
+  const componentDescription = createTextElement("p", "component-details__description", component.description);
   componentDetails.appendChild(componentDescription);
 
   component.types.forEach((type) => {
@@ -55,14 +63,10 @@ const createComponentDetails = (component) => {
     typeContainer.classList.add("component-details__type");
     componentDetails.appendChild(typeContainer);
 
-    const typeTitle = document.createElement("h4");
-    typeTitle.classList.add("component-details__type-title");
-    typeTitle.textContent = type.type;
+    const typeTitle = createTextElement("h4", "component-details__type-title", type.type);  
     typeContainer.appendChild(typeTitle);
 
-    const typeDescription = document.createElement("p");
-    typeDescription.classList.add("component-details__type-description");
-    typeDescription.textContent = type.description;
+    const typeDescription =createTextElement("p", "component-details__type-description", type.description);
     typeContainer.appendChild(typeDescription);
 
     const typeCode = document.createElement("code");
@@ -101,9 +105,7 @@ const createListItem = (item) => {
   titleGroup.classList.add("sidebar__title-group");
   listItem.appendChild(titleGroup);
 
-  const itemTitle = document.createElement("h3");
-  itemTitle.classList.add("sidebar__title");
-  itemTitle.textContent = item.title;
+  const itemTitle = createTextElement("h3", "sidebar__title", item.title);
   titleGroup.appendChild(itemTitle);
 
   const chevron = document.createElement("img");
@@ -115,12 +117,13 @@ const createListItem = (item) => {
   const subList = document.createElement("ul");
   subList.classList.add("sidebar__sublist");
   subList.classList.add("sidebar__sublist--open");
-
+  
   listItem.appendChild(subList);
 
   item.data.forEach((component) => {
     createSubListItems(subList, component);
 
+    // Eventdelegation for subitems in the sublist to show component details when clicked on them
     subList.addEventListener("click", (e) => {
       if (e.target.classList.contains("sidebar__subitem")) {
         let target = e.target;
@@ -147,15 +150,11 @@ const initializeDOM = () => {
         showComponentDetails(target)
       });
       canvas.appendChild(component);
-
-      const componentTitle = document.createElement("h3");
-      componentTitle.classList.add("component-details__title");
-      componentTitle.textContent = element.component;
+     
+      const componentTitle = createTextElement("h3", "component-details__title", element.component);
       component.appendChild(componentTitle);
 
-      const componentDescription = document.createElement("p");
-      componentDescription.classList.add("component-details__description");
-      componentDescription.textContent = element.description;
+      const componentDescription = createTextElement("p", "component-details__description", element.description);
       component.appendChild(componentDescription);
     });
   });
@@ -223,11 +222,14 @@ search.addEventListener("input", (e) => {
   performSearch(value);
 });
 
-const searchOnEnter = (e) => {
+/* const searchOnEnter = (e) => {
   if (e.key === "Enter") {
   }
 };
 
-search.addEventListener("keypress", searchOnEnter);
+search.addEventListener("keypress", searchOnEnter); */
 
 initializeDOM();
+
+
+
