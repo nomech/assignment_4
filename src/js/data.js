@@ -36,28 +36,14 @@ export const data = [
       },
       {
         id: "2",
-        component: "Inputs",
-        description: "Inputs are used to collect data on a page.",
+        component: "Dropdowns",
+        description: "Dropdowns are used to display a list of options.",
         types: [
           {
-            type: "Text",
-            description: "The text input is used to collect text data.",
-            code: `<input type="text" class="input input--text" placeholder="Text input">`,
-          },
-          {
-            type: "Email",
-            description: "The email input is used to collect email data.",
-            code: `<input type="email" class="input input--email" placeholder="Email input">`,
-          },
-          {
-            type: "Password",
-            description: "The password input is used to collect password data.",
-            code: `<input type="password" class="input input--password" placeholder="Password input">`,
-          },
-          {
-            type: "Checkbox",
-            description: "The checkbox input is used to collect boolean data.",
-            code: `<input type="checkbox" class="input input--checkbox">`,
+            type: "Primary",
+            description:
+              "The primary dropdown is used to display the main options on a page.",
+            code: `<div class="dropdown dropdown--primary">Primary dropdown</div>`,
           },
         ],
       },
@@ -99,6 +85,71 @@ export const data = [
           },
         ],
       },
+      {
+        id: "5",
+        component: "Navigation Bars",
+        description: "Navigation bars are used to navigate between pages.",
+        types: [
+          {
+            type: "Primary",
+            description:
+              "The primary navigation bar is used to navigate between the main pages on a site.",
+            code: `<nav class="nav nav--primary">Primary navigation bar</nav>`,
+          },
+        ],
+      },
+      {
+        id: "6",
+        component: "Alerts",
+        description: "Alerts are used to display messages on a page.",
+        types: [
+          {
+            type: "Primary",
+            description:
+              "The primary alert is used to display the main messages on a page.",
+            code: `<div class="alert alert--primary">Primary alert</div>`,
+          },
+        ],
+      },
+      {
+        id: "7",
+        component: "Tooltips",
+        description: "Tooltips are used to display additional information on a page.",
+        types: [
+          {
+            type: "Primary",
+            description:
+              "The primary tooltip is used to display the main information on a page.",
+            code: `<div class="tooltip tooltip--primary">Primary tooltip</div>`,
+          },
+        ],
+      },
+      {
+        id: "8",
+        component: "Loading Spinners",
+        description: "Loading spinners are used to indicate that a page is loading.",
+        types: [
+          {
+            type: "Primary",
+            description:
+              "The primary loading spinner is used to indicate the main loading on a page.",
+            code: `<div class="loading-spinner loading-spinner--primary">Primary loading spinner</div>`,
+          },
+        ],
+      },
+      {
+        id: "9",  
+        component: "Progress Bars",
+        description: "Progress bars are used to display the progress of an action.",
+        types: [
+          {
+            type: "Primary",
+            description:
+              "The primary progress bar is used to display the main progress on a page.",
+            code: `<div class="progress progress--primary">Primary progress bar</div>`,
+          },
+        ],
+      }
     ],
   },
   {
@@ -108,8 +159,7 @@ export const data = [
         id: "5",
         component: "Placeholder",
         description: "Placeholder description",
-        types: [
-        ],
+        types: [],
         size: ["Small", "Medium", "Large"],
       },
     ],

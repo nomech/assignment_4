@@ -1,112 +1,124 @@
+
+
+
 .component-details {
-    display: flex;
-    justify-content: center;
-    flex-grow: 1;
-    overflow-y: auto;
-    align-self: stretch;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  padding: 64px;
   
-  .component-details::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .component-details__canvas {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-auto-rows: min-content;
-    justify-items: center;
-    width: 100%;
-    margin: 48px;
-    padding: 28px;
-    gap: 32px;
-  }
-  
-  .component-details__component {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #c8c8c8;
-    border-radius: 13px;
-    padding: 0 0 16px 0;
-    background-color: #ffffff;
-    width: 100%;
-    cursor: pointer;
-  }
-  
-  .component-details__component-title {
-    background-color: #c8c8c8;
-    color: white;
-    padding: 12px;
-    border-radius: 12px 12px 0 0;
-    font-size: 20px;
-    font-weight: 700;
-  }
-  .component-details__title {
-    background-color: grey;
-    color: white;
-    padding: 8px;
-    border-radius: 12px 12px 0 0;
-    font-size: 17px;
-    font-weight: 600;
-  }
-  
-  .component-details__description {
-    padding: 12px;
-    font-size: 16px;
-  }
-  
-  .component-details__type {
-    padding: 12px;
-    border-top: 1px solid #c8c8c8;
-  }
-  
-  .component-details__type-title {
-    font-size: 18px;
-    font-weight: 600;
-  }
-  
-  .component-details__type-description {
-    margin-top: 8px;
-    font-size: 16px;
-  }
-  
-  .component-details__type-code {
-    display: block;
-    margin-top: 8px;
-    padding: 8px;
-    background-color: #f4f4f4;
-    border-radius: 6px;
-    font-family: monospace;
-  }
-  
- 
-  
-  .component-details__result-item {
-    padding: 12px;
-    border-bottom: 1px solid #c8c8c8;
-    cursor: pointer;
-  }
-  
-  .component-details__result-item:hover {
-    background-color: #f4f4f4;
-  }
-  
-  .component-details__result-title {
-    font-size: 16px;
-    font-weight: 500;
-  }
-  
-  .component-details__button {
-    align-self: center;
-    padding: 6px 12px;
-    border: none;
-    border-radius: 12px;
-    background-color: rgb(92, 92, 92);
-    color: #ffffff;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .component-details__button:hover {
-    background-color: rgb(72, 72, 72);
-  }
-  
+}
+
+.component-details::-webkit-scrollbar {
+  display: none;
+}
+
+.component-details__canvas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-auto-rows: min-content;
+  justify-items: flex-start;
+  padding: 28px;
+  gap: 32px;
+  width: 50%;
+}
+
+.component-details__category {
+  color: var(--text-color);
+}
+
+.component-details__component, .component-details__component-details {
+  display: flex;
+  flex-direction: column;
+  border-radius: 13px;
+  padding: 0 0 16px 0;
+  background-color: #ffffff;
+  cursor: pointer;
+
+}
+
+.component-details__component{
+  width: 200px;
+}
+
+.component-details__component-details {
+  cursor: unset;
+}
+
+
+.component-details__title {
+  background-color: var(--secondary-bg-color);
+  color: var(--text-color);
+  padding: 8px;
+  border-radius: 12px 12px 0 0;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.component-details__component-title{
+  background-color: var(--secondary-bg-color);
+  color: var(--text-color);
+  padding: 8px;
+  border-radius: 12px 12px 0 0;
+  font-size: 17px;
+  font-weight: 700;
+}
+.component-details__description {
+  padding: 12px;
+  font-size: 16px;
+}
+
+.component-details__type {
+  padding: 12px;
+  border-top: 1px solid #c8c8c8;
+}
+
+.component-details__type-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.component-details__type-description {
+  margin-top: 8px;
+  font-size: 16px;
+}
+
+.component-details__type-code {
+  display: block;
+  margin-top: 8px;
+  padding: 8px;
+  background-color: #f4f4f4;
+  border-radius: 6px;
+  font-family: monospace;
+}
+
+.component-details__result-item {
+  padding: 12px;
+  border-bottom: 1px solid #c8c8c8;
+  cursor: pointer;
+}
+
+.component-details__result-item:hover {
+  background-color: #f4f4f4;
+}
+
+.component-details__result-title {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.component-details__button {
+  align-self: center;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 12px;
+  background-color: rgb(92, 92, 92);
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.component-details__button:hover {
+  background-color: rgb(72, 72, 72);
+}

@@ -13,11 +13,23 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-color: #fff5f5;
+ /*  background-color: #fff5f5; */
+ background-color: var(--primary-bg-color);
 }
 
 main {
   flex-grow: 1;
   display: flex;
+}
+
+:root {
+  --primary-color:#3c008f;
+  --primary-bg-color: #05024f;
+
+  --secondary-color:#ffffff;
+  --secondary-bg-color: #591ff9;  
+  
+  --text-color: #ffffff;
+  --border-color: #3c008f;
 }
 

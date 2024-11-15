@@ -2,28 +2,43 @@
 
 import { data } from "./data.js";
 
-const drawerButton = document.querySelector(".sidebar__drawer-button");
-const chevron = document.querySelector(".sidebar__drawer-button-icon");
-const sidebar = document.querySelector(".sidebar");
-const sidebarList = document.querySelector(".sidebar__list");
-const search = document.querySelector(".page-header__search");
-const canvas = document.querySelector(".component-details__canvas");
-const resultsBox = document.querySelector(".page-header__search-results");
-const logo = document.querySelector(".page-header__logo");
+const elementsDOM = {
+  drawerButton: document.querySelector(".sidebar__drawer-button"),
+  chevron: document.querySelector(".sidebar__drawer-button-icon"),
+  sidebar: document.querySelector(".sidebar"),
+  sidebarList: document.querySelector(".sidebar__list"),
+  search: document.querySelector(".page-header__search"),
+  resultsBox: document.querySelector(".page-header__search-results"),
+  logo: document.querySelector(".page-header__logo"),
+  canvas: document.querySelector(".component-details"),
+  details:document.querySelector(".component-details"),
+};
+
 let initialized = false;
+
+// INITIAL RENDER
+window.addEventListener("DOMContentLoaded", () => {
+  initializeDOM();
+  logo.addEventListener("click", reinitializeDOM);
+  search.addEventListener("blur", onUnfocusSearch);
+  drawerButton.addEventListener("click", triggerDrawer);
+  
+});
+
+const { drawerButton, chevron, sidebar, sidebarList, search, resultsBox, logo, canvas, details } = elementsDOM;
 
 const createTextElement = (tag, className, text) => {
   const element = document.createElement(tag);
   element.classList.add(className);
   element.innerText = text;
   return element;
-}
+};
 
 const createDivElement = (className) => {
   const element = document.createElement("div");
   element.classList.add(className);
-  return element; 
-}
+  return element;
+};
 
 const collapseComponents = (e) => {
   let children = e.currentTarget.children;
@@ -49,13 +64,21 @@ const collapseComponents = (e) => {
 
 const createComponentDetails = (component) => {
   canvas.innerHTML = "";
-  const componentDetails = createDivElement("component-details__component");
+  const componentDetails = createDivElement("component-details__component-details");
   canvas.appendChild(componentDetails);
 
-  const componentTitle = createTextElement("h3", "component-details__component-title", component.component);
+  const componentTitle = createTextElement(
+    "h3",
+    "component-details__component-title",
+    component.component
+  );
   componentDetails.appendChild(componentTitle);
 
-  const componentDescription = createTextElement("p", "component-details__description", component.description);
+  const componentDescription = createTextElement(
+    "p",
+    "component-details__description",
+    component.description
+  );
   componentDetails.appendChild(componentDescription);
 
   component.types.forEach((type) => {
@@ -63,10 +86,18 @@ const createComponentDetails = (component) => {
     typeContainer.classList.add("component-details__type");
     componentDetails.appendChild(typeContainer);
 
-    const typeTitle = createTextElement("h4", "component-details__type-title", type.type);  
+    const typeTitle = createTextElement(
+      "h4",
+      "component-details__type-title",
+      type.type
+    );
     typeContainer.appendChild(typeTitle);
 
-    const typeDescription =createTextElement("p", "component-details__type-description", type.description);
+    const typeDescription = createTextElement(
+      "p",
+      "component-details__type-description",
+      type.description
+    );
     typeContainer.appendChild(typeDescription);
 
     const typeCode = document.createElement("code");
@@ -76,27 +107,26 @@ const createComponentDetails = (component) => {
   });
 };
 
-const showComponentDetails = (target) => {
-  console.log(target);
-  let id = target.dataset.id;
-  console.log(id);
+const showComponentDetails = (target, dataParent) => {
+  const id = target.dataset.id;
 
-  data[0].data.forEach((component) => {
+  data[dataParent].data.forEach((component) => {
     if (component.id === id) {
       createComponentDetails(component);
     }
   });
 };
 
-const createSubListItems = (parent, data) => {
+const createSubListItems = (parent, data, dataParent) => {
   const subListItem = document.createElement("li");
   subListItem.classList.add("sidebar__subitem");
   subListItem.dataset.id = data.id;
+  subListItem.dataset.parent = dataParent;
   subListItem.textContent = data.component;
   parent.appendChild(subListItem);
 };
 
-const createListItem = (item) => {
+const createListItem = (item, index) => {
   const listItem = document.createElement("li");
   listItem.classList.add("sidebar__item");
   sidebarList.appendChild(listItem);
@@ -117,17 +147,18 @@ const createListItem = (item) => {
   const subList = document.createElement("ul");
   subList.classList.add("sidebar__sublist");
   subList.classList.add("sidebar__sublist--open");
-  
+
   listItem.appendChild(subList);
 
   item.data.forEach((component) => {
-    createSubListItems(subList, component);
+    createSubListItems(subList, component, index);
 
     // Eventdelegation for subitems in the sublist to show component details when clicked on them
     subList.addEventListener("click", (e) => {
       if (e.target.classList.contains("sidebar__subitem")) {
-        let target = e.target;
-        showComponentDetails(target);
+        const target = e.target;
+        const dataParent = target.dataset.parent;
+        showComponentDetails(target, dataParent);
       }
     });
   });
@@ -137,27 +168,52 @@ const createListItem = (item) => {
 };
 
 const initializeDOM = () => {
-  data.forEach((item) => {
+  data.forEach((item, index) => {
     if (!initialized) {
-      createListItem(item);
+      createListItem(item, index);
     }
+
+    const canvas = document.createElement("div");
+    canvas.classList.add("component-details__canvas");
+
+    const title = createTextElement(
+      "h2",
+      "component-details__category",
+      item.title
+    );
+    
+  
+    details.appendChild(title);
+    details.appendChild(canvas);
+   
     item.data.forEach((element) => {
       const component = document.createElement("div");
       component.classList.add("component-details__component");
       component.dataset.id = element.id;
-      component.addEventListener("click", (e)=>{
-        let target = e.currentTarget;
-        showComponentDetails(target)
+      component.dataset.parent = index;
+      component.addEventListener("click", (e) => {
+        const target = e.currentTarget;
+        const dataParent = target.dataset.parent;
+        showComponentDetails(target, dataParent);
       });
       canvas.appendChild(component);
-     
-      const componentTitle = createTextElement("h3", "component-details__title", element.component);
+
+      const componentTitle = createTextElement(
+        "h3",
+        "component-details__title",
+        element.component
+      );
       component.appendChild(componentTitle);
 
-      const componentDescription = createTextElement("p", "component-details__description", element.description);
+      const componentDescription = createTextElement(
+        "p",
+        "component-details__description",
+        element.description
+      );
       component.appendChild(componentDescription);
     });
   });
+
   initialized = true;
 };
 
@@ -165,8 +221,6 @@ const reinitializeDOM = () => {
   canvas.innerHTML = "";
   initializeDOM();
 };
-
-logo.addEventListener("click", reinitializeDOM);
 
 const triggerDrawer = () => {
   sidebar.classList.toggle("sidebar--retracted");
@@ -181,46 +235,46 @@ const onUnfocusSearch = () => {
   }, 200);
 };
 
-search.addEventListener("blur", onUnfocusSearch);
-drawerButton.addEventListener("click", triggerDrawer);
-
-const performSearch = (input) => {
+/* const performSearch = (input) => {
   let results = [];
 
   if (input.length > 0) {
-    data.forEach((item) => {
+    data.forEach((item, index) => {
       item.data.forEach((component) => {
         if (component.component.toLowerCase().includes(input)) {
           results.push(component);
         }
       });
     });
-  }
+  
 
   resultsBox.innerHTML = "";
   resultsBox.classList.add("page-header__search-results--show");
+
   results.forEach((result) => {
     const resultsItem = document.createElement("div");
     resultsItem.classList.add("component-details__result-item");
     resultsItem.dataset.id = result.id;
+    resultsItem.dataset.parent = index;
 
     resultsItem.addEventListener("click", (e) => {
-      let target = e.currentTarget;
-      showComponentDetails(target);
+      const target = e.currentTarget;
+
+      showComponentDetails(target, dataParent);
     });
+
     resultsBox.appendChild(resultsItem);
 
-    const resultsTitle = document.createElement("h3");
-    resultsTitle.classList.add("component-details__result-title");
-    resultsTitle.textContent = result.component;
+    const resultsTitle = createTextElement("h3", "component-details__result-title", result.component);
     resultsItem.appendChild(resultsTitle);
   });
+  }
 };
 
 search.addEventListener("input", (e) => {
   let value = e.target.value;
   performSearch(value);
-});
+}); */
 
 /* const searchOnEnter = (e) => {
   if (e.key === "Enter") {
@@ -228,8 +282,3 @@ search.addEventListener("input", (e) => {
 };
 
 search.addEventListener("keypress", searchOnEnter); */
-
-initializeDOM();
-
-
-
