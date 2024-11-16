@@ -26,7 +26,6 @@ export const data = [
             class: "button--secondary",
             text: "Secondary",
             size: ["small", "medium", "large"],
-            
           },
           {
             type: "Disabled",
@@ -49,7 +48,22 @@ export const data = [
             type: "Primary",
             description:
               "The primary dropdown is used to display the main options on a page.",
-            code: `<div class="dropdown dropdown--primary">Primary dropdown</div>`,
+            code: `
+<select name="dropdown" id="" class="dropdown dropdown--primary">
+  <option value="option1">Option 1</option>
+  <option value="option2">Option 2</option>
+  <option value="option3">Option 3</option>
+</select>
+                  `,
+            tag: "select",
+            class: "dropdown--primary",
+            text: "Dropdown",
+            options: [
+              { value: "option1", text: "Option 1" },
+              { value: "option2", text: "Option 2" },
+              { value: "option3", text: "Option 3" },
+            ],
+            size: ["small", "medium", "large"],
           },
         ],
       },
@@ -63,13 +77,11 @@ export const data = [
             description:
               "The primary card is used to display the main content on a page.",
             code: `<div class="card card--primary">Primary card</div>`,
-          },
-          {
-            type: "Secondary",
-            description:
-              "The secondary card is used to display secondary content on a page.",
-            code: `<div class="card card--secondary">Secondary card</div>`,
-          },
+            tag: "div",
+            class: "card--primary",
+            text: "Primary card",
+            size: ["small", "medium", "large"],
+          }
         ],
       },
       {

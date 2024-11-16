@@ -24,8 +24,6 @@ window.addEventListener("DOMContentLoaded", () => {
   drawerButton.addEventListener("click", triggerDrawer);
 });
 
-
-
 const {
   drawerButton,
   chevron,
@@ -37,8 +35,6 @@ const {
   canvas,
   details,
 } = elementsDOM;
-
-
 
 const createTextElement = (tag, className, text) => {
   const element = document.createElement(tag);
@@ -115,22 +111,34 @@ const createComponentDetails = (component) => {
     );
     typeContainer.appendChild(typeDescription);
 
+    const preformatted   = document.createElement("pre");
+    typeContainer.appendChild(preformatted);
+    
     const typeCode = document.createElement("code");
     typeCode.classList.add("component-details__type-code");
     typeCode.textContent = type.code;
-    typeContainer.appendChild(typeCode);
+    preformatted.appendChild(typeCode);
 
     const tag = type.tag;
     const className = type.class;
     const text = type.text;
+    const options = type.options;
 
     if (tag) {
-      const demoContainer = createDivElement("component-details__demo-container");
+      const demoContainer = createDivElement(
+        "component-details__demo-container"
+      );
       typeContainer.appendChild(demoContainer);
 
       type.size.forEach((size) => {
-      const displayComponent = createComponent(tag, className, text, size);
-      demoContainer.appendChild(displayComponent);
+        const displayComponent = createComponent(
+          tag,
+          className,
+          text,
+          size,
+          options
+        );
+        demoContainer.appendChild(displayComponent);
       });
     }
   });
@@ -138,7 +146,7 @@ const createComponentDetails = (component) => {
 
 const showComponentDetails = (target, dataParent) => {
   const id = target.dataset.id;
-  
+
   data[dataParent].data.forEach((component) => {
     if (component.id === id) {
       createComponentDetails(component);
@@ -263,11 +271,23 @@ const onUnfocusSearch = () => {
   }, 200);
 };
 
-const createComponent = (tag, className, text, size) => {
+const createComponent = (tag, className, text, size, options) => {
   const element = document.createElement(tag);
   element.classList.add("component__demo", tag, className, size);
   element.innerText = text;
+  if (options) {
+    createOptions(element, options);
+  }
   return element;
+};
+
+const createOptions = (select, options) => {
+  options.forEach((option) => {
+    const optionElement = document.createElement("option");
+    optionElement.value = option.value;
+    optionElement.text = option.text;
+    select.appendChild(optionElement);
+  });
 };
 
 /* const performSearch = (input) => {

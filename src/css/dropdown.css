@@ -1,0 +1,10 @@
+.dropdown--primary{
+    cursor: pointer;
+}
+
+.div {
+     border-radius: 6px;
+    border: 2px solid var(--primary-bg-color);
+padding: 10px 16px;
+    width: 224px;
+}
