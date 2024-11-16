@@ -23,7 +23,7 @@
     align-items: center;
     position: absolute;
     right: -15px;
-    top: 400px;
+    top: 300px;
     z-index: 1;
     border-radius: 12px;
     border: 1px solid;
@@ -115,7 +115,7 @@
   .sidebar__subitem {
     border-radius: 6px;
     background-color: var(--secondary-bg-color);
-    padding: 4px 16px;
+    padding: 6px 16px;
     text-decoration: none;
     color: var(--text-color);
   }

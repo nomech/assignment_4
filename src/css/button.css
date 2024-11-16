@@ -1,0 +1,36 @@
+.button {
+    border: unset;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.button--primary {
+    background: var(--secondary-bg-color);
+    color: var(--secondary-color);
+}   
+.button--secondary {
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: var(--secondary-color);
+    color: var(--secondary-bg-color);
+    border: 1px solid var(--border-color);
+}
+
+.button--disabled {
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: #e8e8e8;
+    color: #8f8f8f;
+    border: 1px solid var(--border-color);
+}
+
+.medium {
+    padding: 12px 16px;
+    border-radius: 8px;
+}
+
+.large {
+    padding: 16px 24px;
+    border-radius: 8px;
+}   

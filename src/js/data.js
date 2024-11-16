@@ -12,27 +12,33 @@ export const data = [
             description:
               "The primary button is used to indicate the main action on a page.",
             code: `<button class="button button--primary">Primary</button>`,
+            tag: "button",
+            class: "button--primary",
+            text: "Primary",
+            size: ["small", "medium", "large"],
           },
           {
             type: "Secondary",
             description:
               "The secondary button is used to indicate a secondary action on a page.",
             code: `<button class="button button--secondary">Secondary</button>`,
-          },
-          {
-            type: "Tertiary",
-            description:
-              "The tertiary button is used to indicate a tertiary action on a page.",
-            code: `<button class="button button--tertiary">Tertiary</button>`,
+            tag: "button",
+            class: "button--secondary",
+            text: "Secondary",
+            size: ["small", "medium", "large"],
+            
           },
           {
             type: "Disabled",
             description:
               "The disabled button is used to indicate a disabled action on a page.",
             code: `<button class="button button--disabled" disabled>Disabled</button>`,
+            tag: "button",
+            class: "button--disabled",
+            text: "Disabled",
+            size: ["small", "medium", "large"],
           },
         ],
-        size: ["Small", "Medium", "Large"],
       },
       {
         id: "2",
@@ -114,7 +120,8 @@ export const data = [
       {
         id: "7",
         component: "Tooltips",
-        description: "Tooltips are used to display additional information on a page.",
+        description:
+          "Tooltips are used to display additional information on a page.",
         types: [
           {
             type: "Primary",
@@ -127,7 +134,8 @@ export const data = [
       {
         id: "8",
         component: "Loading Spinners",
-        description: "Loading spinners are used to indicate that a page is loading.",
+        description:
+          "Loading spinners are used to indicate that a page is loading.",
         types: [
           {
             type: "Primary",
@@ -138,9 +146,10 @@ export const data = [
         ],
       },
       {
-        id: "9",  
+        id: "9",
         component: "Progress Bars",
-        description: "Progress bars are used to display the progress of an action.",
+        description:
+          "Progress bars are used to display the progress of an action.",
         types: [
           {
             type: "Primary",
@@ -149,7 +158,7 @@ export const data = [
             code: `<div class="progress progress--primary">Primary progress bar</div>`,
           },
         ],
-      }
+      },
     ],
   },
   {

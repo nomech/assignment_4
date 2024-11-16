@@ -16,12 +16,12 @@
 
 .component-details__canvas {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   grid-auto-rows: min-content;
   justify-items: flex-start;
   padding: 28px;
   gap: 32px;
-  width: 50%;
+  width: 90%;
 }
 
 .component-details__category {
@@ -39,7 +39,7 @@
 }
 
 .component-details__component{
-  width: 200px;
+  width: 240px;
 }
 
 .component-details__component-details {
@@ -72,6 +72,10 @@
 .component-details__type {
   padding: 12px;
   border-top: 1px solid #c8c8c8;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
 }
 
 .component-details__type-title {
@@ -121,4 +125,11 @@
 
 .component-details__button:hover {
   background-color: rgb(72, 72, 72);
+}
+
+
+.component-details__demo-container{
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }

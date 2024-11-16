@@ -11,7 +11,7 @@ const elementsDOM = {
   resultsBox: document.querySelector(".page-header__search-results"),
   logo: document.querySelector(".page-header__logo"),
   canvas: document.querySelector(".component-details"),
-  details:document.querySelector(".component-details"),
+  details: document.querySelector(".component-details"),
 };
 
 let initialized = false;
@@ -22,10 +22,23 @@ window.addEventListener("DOMContentLoaded", () => {
   logo.addEventListener("click", reinitializeDOM);
   search.addEventListener("blur", onUnfocusSearch);
   drawerButton.addEventListener("click", triggerDrawer);
-  
 });
 
-const { drawerButton, chevron, sidebar, sidebarList, search, resultsBox, logo, canvas, details } = elementsDOM;
+
+
+const {
+  drawerButton,
+  chevron,
+  sidebar,
+  sidebarList,
+  search,
+  resultsBox,
+  logo,
+  canvas,
+  details,
+} = elementsDOM;
+
+
 
 const createTextElement = (tag, className, text) => {
   const element = document.createElement(tag);
@@ -64,7 +77,9 @@ const collapseComponents = (e) => {
 
 const createComponentDetails = (component) => {
   canvas.innerHTML = "";
-  const componentDetails = createDivElement("component-details__component-details");
+  const componentDetails = createDivElement(
+    "component-details__component-details"
+  );
   canvas.appendChild(componentDetails);
 
   const componentTitle = createTextElement(
@@ -104,12 +119,26 @@ const createComponentDetails = (component) => {
     typeCode.classList.add("component-details__type-code");
     typeCode.textContent = type.code;
     typeContainer.appendChild(typeCode);
+
+    const tag = type.tag;
+    const className = type.class;
+    const text = type.text;
+
+    if (tag) {
+      const demoContainer = createDivElement("component-details__demo-container");
+      typeContainer.appendChild(demoContainer);
+
+      type.size.forEach((size) => {
+      const displayComponent = createComponent(tag, className, text, size);
+      demoContainer.appendChild(displayComponent);
+      });
+    }
   });
 };
 
 const showComponentDetails = (target, dataParent) => {
   const id = target.dataset.id;
-
+  
   data[dataParent].data.forEach((component) => {
     if (component.id === id) {
       createComponentDetails(component);
@@ -181,11 +210,10 @@ const initializeDOM = () => {
       "component-details__category",
       item.title
     );
-    
-  
+
     details.appendChild(title);
     details.appendChild(canvas);
-   
+
     item.data.forEach((element) => {
       const component = document.createElement("div");
       component.classList.add("component-details__component");
@@ -233,6 +261,13 @@ const onUnfocusSearch = () => {
     search.value = "";
     resultsBox.innerHTML = "";
   }, 200);
+};
+
+const createComponent = (tag, className, text, size) => {
+  const element = document.createElement(tag);
+  element.classList.add("component__demo", tag, className, size);
+  element.innerText = text;
+  return element;
 };
 
 /* const performSearch = (input) => {
