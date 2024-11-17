@@ -80,7 +80,7 @@ export const data = [
             tag: "div",
             class: "card--primary",
             text: "Primary card",
-            size: ["small", "medium", "large"],
+            size: ["medium"],
           }
         ],
       },

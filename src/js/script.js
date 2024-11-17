@@ -76,6 +76,7 @@ const createComponentDetails = (component) => {
   const componentDetails = createDivElement(
     "component-details__component-details"
   );
+
   canvas.appendChild(componentDetails);
 
   const componentTitle = createTextElement(
@@ -83,14 +84,13 @@ const createComponentDetails = (component) => {
     "component-details__component-title",
     component.component
   );
-  componentDetails.appendChild(componentTitle);
 
   const componentDescription = createTextElement(
     "p",
     "component-details__description",
     component.description
   );
-  componentDetails.appendChild(componentDescription);
+  componentDetails.append(componentTitle, componentDescription);
 
   component.types.forEach((type) => {
     const typeContainer = document.createElement("div");
@@ -102,23 +102,22 @@ const createComponentDetails = (component) => {
       "component-details__type-title",
       type.type
     );
-    typeContainer.appendChild(typeTitle);
 
     const typeDescription = createTextElement(
       "p",
       "component-details__type-description",
       type.description
     );
-    typeContainer.appendChild(typeDescription);
-
+  
     const preformatted   = document.createElement("pre");
-    typeContainer.appendChild(preformatted);
-    
     const typeCode = document.createElement("code");
     typeCode.classList.add("component-details__type-code");
     typeCode.textContent = type.code;
     preformatted.appendChild(typeCode);
 
+    typeContainer.append(typeTitle, typeDescription, preformatted); 
+
+    
     const tag = type.tag;
     const className = type.class;
     const text = type.text;
@@ -139,6 +138,7 @@ const createComponentDetails = (component) => {
           options
         );
         demoContainer.appendChild(displayComponent);
+
       });
     }
   });
@@ -170,22 +170,20 @@ const createListItem = (item, index) => {
 
   const titleGroup = document.createElement("div");
   titleGroup.classList.add("sidebar__title-group");
-  listItem.appendChild(titleGroup);
 
   const itemTitle = createTextElement("h3", "sidebar__title", item.title);
-  titleGroup.appendChild(itemTitle);
 
   const chevron = document.createElement("img");
   chevron.classList.add("sidebar__chevron");
   chevron.src = "./assets/icons/chevron-lsolid.svg";
   chevron.alt = "chevron";
-  titleGroup.appendChild(chevron);
+  titleGroup.append(itemTitle, chevron);
 
   const subList = document.createElement("ul");
   subList.classList.add("sidebar__sublist");
   subList.classList.add("sidebar__sublist--open");
 
-  listItem.appendChild(subList);
+  listItem.append(titleGroup, subList);
 
   item.data.forEach((component) => {
     createSubListItems(subList, component, index);
@@ -219,8 +217,8 @@ const initializeDOM = () => {
       item.title
     );
 
-    details.appendChild(title);
-    details.appendChild(canvas);
+
+    details.append(title,canvas);
 
     item.data.forEach((element) => {
       const component = document.createElement("div");
@@ -232,6 +230,7 @@ const initializeDOM = () => {
         const dataParent = target.dataset.parent;
         showComponentDetails(target, dataParent);
       });
+
       canvas.appendChild(component);
 
       const componentTitle = createTextElement(
@@ -239,14 +238,13 @@ const initializeDOM = () => {
         "component-details__title",
         element.component
       );
-      component.appendChild(componentTitle);
 
       const componentDescription = createTextElement(
         "p",
         "component-details__description",
         element.description
       );
-      component.appendChild(componentDescription);
+      component.append(componentTitle, componentDescription);
     });
   });
 
