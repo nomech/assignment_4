@@ -77,7 +77,7 @@ const createComponentDetails = (component) => {
     "component-details__component-details"
   );
 
-  canvas.appendChild(componentDetails);
+  canvas.append(componentDetails);
 
   const componentTitle = createTextElement(
     "h3",
@@ -95,7 +95,7 @@ const createComponentDetails = (component) => {
   component.types.forEach((type) => {
     const typeContainer = document.createElement("div");
     typeContainer.classList.add("component-details__type");
-    componentDetails.appendChild(typeContainer);
+    componentDetails.append(typeContainer);
 
     const typeTitle = createTextElement(
       "h4",
@@ -108,39 +108,28 @@ const createComponentDetails = (component) => {
       "component-details__type-description",
       type.description
     );
-  
-    const preformatted   = document.createElement("pre");
+
+    const preformatted = document.createElement("pre");
     const typeCode = document.createElement("code");
     typeCode.classList.add("component-details__type-code");
     typeCode.textContent = type.code;
-    preformatted.appendChild(typeCode);
+    preformatted.append(typeCode);
 
-    typeContainer.append(typeTitle, typeDescription, preformatted); 
+    typeContainer.append(typeTitle, typeDescription, preformatted);
 
-    
-    const tag = type.tag;
-    const className = type.class;
-    const text = type.text;
-    const options = type.options;
+    const demoContainer = createDivElement("component-details__demo-container");
+    typeContainer.append(demoContainer);
+    const code = type.code;
+    const  block = component.block;
 
-    if (tag) {
-      const demoContainer = createDivElement(
-        "component-details__demo-container"
-      );
-      typeContainer.appendChild(demoContainer);
 
-      type.size.forEach((size) => {
-        const displayComponent = createComponent(
-          tag,
-          className,
-          text,
-          size,
-          options
-        );
-        demoContainer.appendChild(displayComponent);
+    type.sizes.forEach((size, index) => {
+      //This code is locally stored and is trusted, and does not depend on user input, this should be safe to use and not a security risk for XSS
+      demoContainer.innerHTML += code;
 
-      });
-    }
+      const currentElement = demoContainer.children[index];
+      currentElement.classList.add(`${block}--${size}`);
+    });
   });
 };
 
@@ -160,13 +149,13 @@ const createSubListItems = (parent, data, dataParent) => {
   subListItem.dataset.id = data.id;
   subListItem.dataset.parent = dataParent;
   subListItem.textContent = data.component;
-  parent.appendChild(subListItem);
+  parent.append(subListItem);
 };
 
 const createListItem = (item, index) => {
   const listItem = document.createElement("li");
   listItem.classList.add("sidebar__item");
-  sidebarList.appendChild(listItem);
+  sidebarList.append(listItem);
 
   const titleGroup = document.createElement("div");
   titleGroup.classList.add("sidebar__title-group");
@@ -188,7 +177,6 @@ const createListItem = (item, index) => {
   item.data.forEach((component) => {
     createSubListItems(subList, component, index);
 
-    // Eventdelegation for subitems in the sublist to show component details when clicked on them
     subList.addEventListener("click", (e) => {
       if (e.target.classList.contains("sidebar__subitem")) {
         const target = e.target;
@@ -217,8 +205,7 @@ const initializeDOM = () => {
       item.title
     );
 
-
-    details.append(title,canvas);
+    details.append(title, canvas);
 
     item.data.forEach((element) => {
       const component = document.createElement("div");
@@ -231,7 +218,7 @@ const initializeDOM = () => {
         showComponentDetails(target, dataParent);
       });
 
-      canvas.appendChild(component);
+      canvas.append(component);
 
       const componentTitle = createTextElement(
         "h3",
@@ -269,28 +256,9 @@ const onUnfocusSearch = () => {
   }, 200);
 };
 
-const createComponent = (tag, className, text, size, options) => {
-  const element = document.createElement(tag);
-  element.classList.add("component__demo", tag, className, size);
-  element.innerText = text;
-  if (options) {
-    createOptions(element, options);
-  }
-  return element;
-};
-
-const createOptions = (select, options) => {
-  options.forEach((option) => {
-    const optionElement = document.createElement("option");
-    optionElement.value = option.value;
-    optionElement.text = option.text;
-    select.appendChild(optionElement);
-  });
-};
-
 /* const performSearch = (input) => {
   let results = [];
-
+  
   if (input.length > 0) {
     data.forEach((item, index) => {
       item.data.forEach((component) => {
@@ -316,10 +284,10 @@ const createOptions = (select, options) => {
       showComponentDetails(target, dataParent);
     });
 
-    resultsBox.appendChild(resultsItem);
+    resultsBox.append(resultsItem);
 
     const resultsTitle = createTextElement("h3", "component-details__result-title", result.component);
-    resultsItem.appendChild(resultsTitle);
+    resultsItem.append(resultsTitle);
   });
   }
 };

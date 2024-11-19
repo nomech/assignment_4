@@ -36,7 +36,6 @@
   padding: 0 0 16px 0;
   background-color: #ffffff;
   cursor: pointer;
-
 }
 
 .component-details__component{
@@ -45,6 +44,7 @@
 
 .component-details__component-details {
   cursor: unset;
+  gap: 24px;
 }
 
 

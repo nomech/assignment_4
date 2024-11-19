@@ -1,10 +1,18 @@
-.dropdown--primary{
-    cursor: pointer;
+.dropdown--primary {
+  cursor: pointer;
 }
 
-.div {
-     border-radius: 6px;
-    border: 2px solid var(--primary-bg-color);
-padding: 10px 16px;
-    width: 224px;
+.dropdown--small {
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.dropdown--medium {
+  padding: 12px 16px;
+  border-radius: 8px;
+}
+
+.dropdown--large {
+  padding: 16px 24px;
+  border-radius: 8px;
 }

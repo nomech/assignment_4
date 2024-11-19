@@ -21,12 +21,28 @@ main {
   display: flex;
 }
 
+.spinner {
+  width: 64px;
+  animation: spinner 1.5s linear infinite;
+}
+
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 :root {
   --primary-color:#3c008f;
   --primary-bg-color: #05024f;
 
   --secondary-color:#ffffff;
-  --secondary-bg-color: #591ff9;  
+  --secondary-bg-color: #591ff9;
+
+  --hover-color: #8558ff;
+
+  --active-color: #3c008f;
   
   --text-color: #ffffff;
   --border-color: #3c008f;

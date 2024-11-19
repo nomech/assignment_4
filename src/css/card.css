@@ -1,0 +1,32 @@
+.card__title-box {
+    padding: 6px;
+    background-color: var(--secondary-bg-color);
+    color: var(--text-color);
+    border-radius: 8px 8px 0 0;
+}
+
+.card--primary{
+    width: 400px;
+    height: 200px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    padding: 0;
+}
+
+.card {
+    border-radius: 8px;
+}
+
+
+.card__content{
+    padding: 8px;
+}
+
+.card--small {
+    width: 200px;
+    height: 100px;
+}
+
+.card--medium {
+    width: 300px;
+    height: 150px;
+}
