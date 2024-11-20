@@ -48,3 +48,8 @@ main {
   --border-color: #3c008f;
 }
 
+footer {
+  height: 600px;
+  background-color: #ffffff;
+
+}

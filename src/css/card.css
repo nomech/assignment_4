@@ -16,6 +16,10 @@
     border-radius: 8px;
 }
 
+.card:hover {
+    border: 1px solid var(--hover-color);
+}
+
 
 .card__content{
     padding: 8px;

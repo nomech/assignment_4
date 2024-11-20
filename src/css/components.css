@@ -71,12 +71,12 @@
 }
 
 .component-details__type {
-  padding: 12px;
-  border-top: 1px solid #c8c8c8;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 12px;
+  padding: 16px 32px;
+  border-top: 1px solid #c8c8c8;
 }
 
 .component-details__type-title {
@@ -87,6 +87,10 @@
 .component-details__type-description {
   margin-top: 8px;
   font-size: 16px;
+}
+
+.component-details__preformatted{
+  width: 100%;
 }
 
 .component-details__type-code {
@@ -132,5 +136,7 @@
 .component-details__demo-container{
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 16px;
+  width: 100%;
 }

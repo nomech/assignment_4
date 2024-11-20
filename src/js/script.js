@@ -79,17 +79,8 @@ const createComponentDetails = (component) => {
 
   canvas.append(componentDetails);
 
-  const componentTitle = createTextElement(
-    "h3",
-    "component-details__component-title",
-    component.component
-  );
-
-  const componentDescription = createTextElement(
-    "p",
-    "component-details__description",
-    component.description
-  );
+  const componentTitle = createTextElement("h3", "component-details__component-title",component.component);
+  const componentDescription = createTextElement("p","component-details__description", component.description);
   componentDetails.append(componentTitle, componentDescription);
 
   component.types.forEach((type) => {
@@ -97,19 +88,12 @@ const createComponentDetails = (component) => {
     typeContainer.classList.add("component-details__type");
     componentDetails.append(typeContainer);
 
-    const typeTitle = createTextElement(
-      "h4",
-      "component-details__type-title",
-      type.type
-    );
-
-    const typeDescription = createTextElement(
-      "p",
-      "component-details__type-description",
-      type.description
-    );
+    const typeTitle = createTextElement("h4","component-details__type-title",type.type);
+    const typeDescription = createTextElement("p", "component-details__type-description", type.description);
 
     const preformatted = document.createElement("pre");
+    preformatted.classList.add("component-details__preformatted");
+
     const typeCode = document.createElement("code");
     typeCode.classList.add("component-details__type-code");
     typeCode.textContent = type.code;
@@ -119,9 +103,15 @@ const createComponentDetails = (component) => {
 
     const demoContainer = createDivElement("component-details__demo-container");
     typeContainer.append(demoContainer);
-    const code = type.code;
-    const  block = component.block;
 
+    typeContainer.addEventListener("click", (e) => {  
+      if(e.target.classList.contains("modal__button")){
+        const modal = document.querySelector(".modal");
+        modal.classList.toggle("modal--hidden");
+      }
+    });
+    const code = type.code;
+    const block = component.block;
 
     type.sizes.forEach((size, index) => {
       //This code is locally stored and is trusted, and does not depend on user input, this should be safe to use and not a security risk for XSS
@@ -131,6 +121,8 @@ const createComponentDetails = (component) => {
       currentElement.classList.add(`${block}--${size}`);
     });
   });
+
+
 };
 
 const showComponentDetails = (target, dataParent) => {
@@ -199,12 +191,7 @@ const initializeDOM = () => {
     const canvas = document.createElement("div");
     canvas.classList.add("component-details__canvas");
 
-    const title = createTextElement(
-      "h2",
-      "component-details__category",
-      item.title
-    );
-
+    const title = createTextElement("h2","component-details__category",item.title);
     details.append(title, canvas);
 
     item.data.forEach((element) => {
@@ -220,17 +207,9 @@ const initializeDOM = () => {
 
       canvas.append(component);
 
-      const componentTitle = createTextElement(
-        "h3",
-        "component-details__title",
-        element.component
-      );
-
-      const componentDescription = createTextElement(
-        "p",
-        "component-details__description",
-        element.description
-      );
+      const componentTitle = createTextElement("h3","component-details__title",element.component);
+      const componentDescription = createTextElement("p","component-details__description",element.description);
+      
       component.append(componentTitle, componentDescription);
     });
   });
