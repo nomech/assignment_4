@@ -1,4 +1,4 @@
-.dropdown--primary {
+.dropdown{
   cursor: pointer;
 }
 
@@ -15,4 +15,14 @@
 .dropdown--large {
   padding: 16px 24px;
   border-radius: 8px;
+}
+
+.dropdown--hover, .dropdown--default:hover {
+  background: var(--hover-color);
+  color: var(--text-color);
+}
+
+.dropdown--active, .dropdown--default:active {
+  background: var(--active-color);
+  color: var(--text-color);
 }

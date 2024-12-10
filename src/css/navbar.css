@@ -18,12 +18,12 @@
     cursor: pointer;
 }
 
-.nav-component__item:hover {
+.nav-component__item--default:hover, .nav-component__item--hover {
     background-color: var(--hover-color);
     border-radius: 16px;
 }
 
-.nav-component__item:active {
+.nav-component__item--default:active, .nav-component__item--active {
     background-color: var(--active-color);
     border-radius: 16px
 }

@@ -9,23 +9,29 @@ export const data = [
         block: "button",
         types: [
           {
-            type: "Primary",
-            description:
-              "The primary button is used to indicate the main action on a page.",
-            code: `<button class="button button--primary">Primary</button>`,
+            type: "Default",
+            description: "",
+            code: `<button class="button button--default">Button</button>`,
             sizes: ["large", "medium", "small"],
           },
           {
-            type: "Secondary",
+            type: "Hover",
             description:
-              "The secondary button is used to indicate a secondary action on a page.",
-            code: `<button class="button button--secondary">Secondary</button>`,
+              "Hover buttons are used to indicate that a button can be clicked.",
+            code: `<button class="button button--hover">Hover</button>`,
+            sizes: ["large", "medium", "small"],
+          },
+          {
+            type: "Active",
+            description:
+              "Active buttons are used to indicate that a button is currently being clicked.",
+            code: `<button class="button button--active" disabled>Active</button>`,
             sizes: ["large", "medium", "small"],
           },
           {
             type: "Disabled",
             description:
-              "The disabled button is used to indicate a disabled action on a page.",
+              "Disabled buttons are used to indicate that a button cannot be clicked.",
             code: `<button class="button button--disabled" disabled>Disabled</button>`,
             sizes: ["large", "medium", "small"],
           },
@@ -38,11 +44,44 @@ export const data = [
         block: "dropdown",
         types: [
           {
-            type: "Primary",
-            description:
-              "",
+            type: "Default",
+            description: "",
             code: `
-<select name="dropdown" id="" class="dropdown dropdown--primary">
+<select name="dropdown" id="" class="dropdown dropdown--default">
+  <option value="option1">Option 1</option>
+  <option value="option2">Option 2</option>
+  <option value="option3">Option 3</option>
+</select>
+                  `,
+            options: [
+              { value: "option1", text: "Option 1" },
+              { value: "option2", text: "Option 2" },
+              { value: "option3", text: "Option 3" },
+            ],
+            sizes: ["large", "medium", "small"],
+          },
+          {
+            type: "Hover",
+            description: "",
+            code: `
+<select name="dropdown" id="" class="dropdown dropdown--hover">
+  <option value="option1">Option 1</option>
+  <option value="option2">Option 2</option>
+  <option value="option3">Option 3</option>
+</select>
+                  `,
+            options: [
+              { value: "option1", text: "Option 1" },
+              { value: "option2", text: "Option 2" },
+              { value: "option3", text: "Option 3" },
+            ],
+            sizes: ["large", "medium", "small"],
+          },
+          {
+            type: "Active",
+            description: "",
+            code: `
+<select name="dropdown" id="" class="dropdown dropdown--active">
   <option value="option1">Option 1</option>
   <option value="option2">Option 2</option>
   <option value="option3">Option 3</option>
@@ -64,43 +103,88 @@ export const data = [
         block: "card",
         types: [
           {
-            type: "Primary",
-            description:
-              "",
+            type: "Default",
+            description: "",
 
-            code: `<div class="card card--primary">
+            code: `<div class="card card--default" tabindex="0">
     <div class="card__title-box">
         </h2>Card title</h2>
     </div>
     <div class="card__content">
         <p>
-          Primary card
+          Card content
         </p>
     </div>
 </div>`,
-            sizes: ["small", "medium"],
+            sizes: ["medium", "small"],
+          },
+          {
+            type: "Hover",
+            description: "",
+
+            code: `<div class="card card--hover">
+ <div class="card__title-box">
+        </h2>Card title</h2>
+    </div>
+    <div class="card__content">
+        <p>
+          Card content
+        </p>
+    </div>
+</div>`,
+            sizes: ["medium", "small"],
+          },
+          {
+            type: "Focus",
+            description: "",
+
+            code: `<div class="card card--focus">
+ <div class="card__title-box">
+        </h2>Card title</h2>
+    </div>
+    <div class="card__content">
+        <p>
+          Card content
+        </p>
+    </div>
+</div>`,
+            sizes: ["medium", "small"],
           },
         ],
       },
       {
         id: "4",
-        component: "Modals",
+        component: "Checkbox",
         description: "Modals are used to display content on a page.",
-        block: "modal",
+        block: "checkbox",
         types: [
           {
-            type: "Primary",
-            description:
-              "",
-            code: `<button class="button button--primary modal__button">Click me</button>
-  <div class="modal modal--hidden">
-    <div class="modal__content">
-      <p class="modal__text">This is a modal</p>
-      <button class="button button--primary button--medium modal__button">OK</button>
-    </div>
-  </div>
-  `,
-            text: "Primary modal",
+            type: "Default",
+            description: "",
+            code: `<input class="checkbox checkbox--default" type="checkbox" id="scales" name="scales" checked />`,
+            text: "Default checkbox",
+            sizes: ["medium"],
+          },
+          {
+            type: "Hover",
+            description: "",
+            code: `
+              <input class="checkbox checkbox--hover" type="checkbox" class="checkbox__input" />`,
+            text: "Default checkbox",
+            sizes: ["medium"],
+          },
+          {
+            type: "Checked",
+            description: "",
+            code: `<input class="checkbox checkbox--checked" type="checkbox" class="checkbox__input" checked />`,
+            text: "Default checkbox",
+            sizes: ["medium"],
+          },
+          {
+            type: "Disabled",
+            description: "",
+            code: `  <input class="checkbox checkbox--disabled" type="checkbox" class="checkbox__input" disabled />`,
+            text: "Default checkbox",
             sizes: ["medium"],
           },
         ],
@@ -112,13 +196,38 @@ export const data = [
         block: "navbar",
         types: [
           {
-            type: "Primary",
-            description:
-              "",
+            type: "Default",
+            description: "",
             code: `
-<nav class="nav-component nav-component--primary">
+<nav class="nav-component nav-component">
   <ul class="nav-component__list">
-    <li class="nav-component__item"><a href="#" class="nav-component__link">Home</a></li>
+    <li class="nav-component__item nav-component__item--default"><a href="#" class="nav-component__link">Home</a></li>
+    <li class="nav-component__item nav-component__item--default"><a href="#" class="nav-component__link">About</a></li>
+    <li class="nav-component__item nav-component__item--default"><a href="#" class="nav-component__link">Contact</a></li>
+  </ul>
+</nav>`,
+            sizes: ["medium"],
+          },
+          {
+            type: "Hover",
+            description: "",
+            code: `
+<nav class="nav-component nav-component">
+  <ul class="nav-component__list">
+    <li class="nav-component__item nav-component__item--hover"><a href="#" class="nav-component__link">Home</a></li>
+    <li class="nav-component__item"><a href="#" class="nav-component__link">About</a></li>
+    <li class="nav-component__item"><a href="#" class="nav-component__link">Contact</a></li>
+  </ul>
+</nav>`,
+            sizes: ["medium"],
+          },
+          {
+            type: "Active",
+            description: "",
+            code: `
+<nav class="nav-component nav-component">
+  <ul class="nav-component__list">
+    <li class="nav-component__item nav-component__item--active"><a href="#" class="nav-component__link">Home</a></li>
     <li class="nav-component__item"><a href="#" class="nav-component__link">About</a></li>
     <li class="nav-component__item"><a href="#" class="nav-component__link">Contact</a></li>
   </ul>
@@ -134,11 +243,10 @@ export const data = [
         block: "alert",
         types: [
           {
-            type: "Primary",
-            description:
-              "",
+            type: "Default",
+            description: "",
             code: `
-            <div class="alert alert--primary">
+            <div class="alert alert--default">
               <svg class="alert__icon"xmlns="http://www.w3.org/2000/svg" 
                 viewBox="0 0 512 512">
                   <!--!Font Awesome Free 6.7.1 by @fontawesome - 
@@ -151,17 +259,16 @@ export const data = [
                   32 0 1 1 64 0 32 32 0 1 1 -64 0z"/>
               </svg>
               <p class="alert__text">
-                Primary alert
+                Default alert
               </p>
             </div>`,
             sizes: ["medium"],
           },
           {
-            type: "Secondary",
-            description:
-              "",
+            type: "Success",
+            description: "",
             code: `
-            <div class="alert alert--secondary">
+            <div class="alert alert--success">
               <svg class="alert__icon"xmlns="http://www.w3.org/2000/svg" 
                 viewBox="0 0 512 512">
                   <!--!Font Awesome Free 6.7.1 by @fontawesome - 
@@ -174,7 +281,29 @@ export const data = [
                   32 0 1 1 64 0 32 32 0 1 1 -64 0z"/>
               </svg>
               <p class="alert__text">
-                Secondary alert
+                Success alert
+              </p>
+            </div>`,
+            sizes: ["medium"],
+          },
+          {
+            type: "Error",
+            description: "",
+            code: `
+            <div class="alert alert--error">
+              <svg class="alert__icon"xmlns="http://www.w3.org/2000/svg" 
+                viewBox="0 0 512 512">
+                  <!--!Font Awesome Free 6.7.1 by @fontawesome - 
+                  https://fontawesome.com License - 
+                  https://fontawesome.com/license/free 
+                  Copyright 2024 Fonticons, Inc.-->
+                  <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 
+                  512zm0-384c13.3 0 24 10.7 24 24l0 112c0 13.3-10.7 24-24 
+                  24s-24-10.7-24-24l0-112c0-13.3 10.7-24 24-24zM224 352a32 
+                  32 0 1 1 64 0 32 32 0 1 1 -64 0z"/>
+              </svg>
+              <p class="alert__text">
+                Error alert
               </p>
             </div>`,
             sizes: ["medium"],
@@ -189,43 +318,65 @@ export const data = [
         block: "input",
         types: [
           {
-            type: "Primary",
-            description:
-              "",
-            code: `<input class="input input--primary" type="text" placeholder="input text">`,
+            type: "Default",
+            description: "",
+            code: `<input class="input input--default" type="text" placeholder="input text">`,
             sizes: ["medium"],
-          },          {
-            type: "Secondary",
-            description:
-              "",
-            code: `<input class="input input--secondary" type="text" placeholder="input text">`,
+          },
+          {
+            type: "Hover",
+            description: "",
+            code: `<input class="input input--hover" type="text" placeholder="input text">`,
             sizes: ["medium"],
-          }
+          },
+          {
+            type: "Focus",
+            description: "",
+            code: `<input class="input input--focus" type="text" placeholder="input text">`,
+            sizes: ["medium"],
+          },
         ],
       },
       {
         id: "8",
-        component: "Loading Spinners",
+        component: "Badge",
         description:
-          "Loading spinners are used to indicate that a page is loading.",
-        block: "spinner",
+          "Badges are used to display status or additional contextual information.",
+        block: "badge",
         types: [
           {
-            type: "Primary",
+            type: "Default",
+            description: "The default badge for general use.",
+            code: `<div class="badge badge--default">Default</div>`,
+            sizes: ["large", "medium"],
+          },
+          {
+            type: "Success",
             description:
-              "The primary loading spinner is used to indicate the main loading on a page.",
-            code: `
-            <svg class="spinner" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-              <!--!Font Awesome Free 6.7.0 by @fontawesome - 
-              https://fontawesome.com License - 
-              https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-              <path d="M304 48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zm0 416a48 48 0 1 0 
-              -96 0 48 48 0 1 0 96 0zM48 304a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm464-48a48 
-              48 0 1 0 -96 0 48 48 0 1 0 96 0zM142.9 437A48 48 0 1 0 75 369.1 48 48 0 1 0 142.9 
-              437zm0-294.2A48 48 0 1 0 75 75a48 48 0 1 0 67.9 67.9zM369.1 437A48 48 0 1 0 437 
-              369.1 48 48 0 1 0 369.1 437z"/>
-            </svg>`,
-            sizes: ["small", "medium", "large"],
+              "The success badge indicates a successful operation or status.",
+            code: `<div class="badge badge--success">Success</div>`,
+            sizes: ["large", "medium"],
+          },
+          {
+            type: "Error",
+            description:
+              "The error badge indicates an error or critical issue.",
+            code: `<div class="badge badge--error">Error</div>`,
+            sizes: ["large", "medium"],
+          },
+          {
+            type: "Warning",
+            description:
+              "The warning badge indicates a potential issue or alert.",
+            code: `<div class="badge badge--warning">Warning</div>`,
+            sizes: ["large", "medium"],
+          },
+          {
+            type: "Disabled",
+            description:
+              "The disabled badge is used for inactive or unavailable items.",
+            code: `<div class="badge badge--disabled">Disabled</div>`,
+            sizes: ["large", "medium"],
           },
         ],
       },

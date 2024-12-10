@@ -72,40 +72,60 @@ const collapseComponents = (e) => {
 };
 
 const createComponentDetails = (component) => {
-  canvas.innerHTML = "";
+  canvas.innerText = "";
   const componentDetails = createDivElement(
     "component-details__component-details"
   );
 
   canvas.append(componentDetails);
 
-  const componentTitle = createTextElement("h3", "component-details__component-title",component.component);
-  const componentDescription = createTextElement("p","component-details__description", component.description);
+  const componentTitle = createTextElement(
+    "h3",
+    "component-details__component-title",
+    component.component
+  );
+  const componentDescription = createTextElement(
+    "p",
+    "component-details__description",
+    component.description
+  );
   componentDetails.append(componentTitle, componentDescription);
 
+  let codeGenerated = false; 
   component.types.forEach((type) => {
     const typeContainer = document.createElement("div");
     typeContainer.classList.add("component-details__type");
     componentDetails.append(typeContainer);
 
-    const typeTitle = createTextElement("h4","component-details__type-title",type.type);
-    const typeDescription = createTextElement("p", "component-details__type-description", type.description);
+    const typeTitle = createTextElement(
+      "h4",
+      "component-details__type-title",
+      type.type
+    );
+    const typeDescription = createTextElement(
+      "p",
+      "component-details__type-description",
+      type.description
+    );
+    typeContainer.append(typeTitle, typeDescription)
+    if (!codeGenerated) {
+      codeGenerated = true;
+      const preformatted = document.createElement("pre");
+      preformatted.classList.add("component-details__preformatted");
 
-    const preformatted = document.createElement("pre");
-    preformatted.classList.add("component-details__preformatted");
+      const typeCode = document.createElement("code");
+      typeCode.classList.add("component-details__type-code");
 
-    const typeCode = document.createElement("code");
-    typeCode.classList.add("component-details__type-code");
-    typeCode.textContent = type.code;
-    preformatted.append(typeCode);
-
-    typeContainer.append(typeTitle, typeDescription, preformatted);
+      typeCode.textContent = type.code;
+      preformatted.append(typeCode);
+      typeContainer.append(preformatted)
+    }
 
     const demoContainer = createDivElement("component-details__demo-container");
     typeContainer.append(demoContainer);
 
-    typeContainer.addEventListener("click", (e) => {  
-      if(e.target.classList.contains("modal__button")){
+    typeContainer.addEventListener("click", (e) => {
+      if (e.target.classList.contains("modal__button")) {
         const modal = document.querySelector(".modal");
         modal.classList.toggle("modal--hidden");
       }
@@ -113,16 +133,15 @@ const createComponentDetails = (component) => {
     const code = type.code;
     const block = component.block;
 
-    type.sizes.forEach((size, index) => {
-      //This code is locally stored and is trusted, and does not depend on user input, this should be safe to use and not a security risk for XSS
-      demoContainer.innerHTML += code;
-
-      const currentElement = demoContainer.children[index];
-      currentElement.classList.add(`${block}--${size}`);
+    type.sizes.forEach((size) => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(code, 'text/html');
+      const element = doc.body.firstElementChild;
+      
+      element.classList.add(`${block}--${size}`);
+      demoContainer.appendChild(element);
     });
   });
-
-
 };
 
 const showComponentDetails = (target, dataParent) => {
@@ -191,7 +210,11 @@ const initializeDOM = () => {
     const canvas = document.createElement("div");
     canvas.classList.add("component-details__canvas");
 
-    const title = createTextElement("h2","component-details__category",item.title);
+    const title = createTextElement(
+      "h2",
+      "component-details__category",
+      item.title
+    );
     details.append(title, canvas);
 
     item.data.forEach((element) => {
@@ -207,9 +230,17 @@ const initializeDOM = () => {
 
       canvas.append(component);
 
-      const componentTitle = createTextElement("h3","component-details__title",element.component);
-      const componentDescription = createTextElement("p","component-details__description",element.description);
-      
+      const componentTitle = createTextElement(
+        "h3",
+        "component-details__title",
+        element.component
+      );
+      const componentDescription = createTextElement(
+        "p",
+        "component-details__description",
+        element.description
+      );
+
       component.append(componentTitle, componentDescription);
     });
   });
@@ -234,51 +265,3 @@ const onUnfocusSearch = () => {
     resultsBox.innerHTML = "";
   }, 200);
 };
-
-/* const performSearch = (input) => {
-  let results = [];
-  
-  if (input.length > 0) {
-    data.forEach((item, index) => {
-      item.data.forEach((component) => {
-        if (component.component.toLowerCase().includes(input)) {
-          results.push(component);
-        }
-      });
-    });
-  
-
-  resultsBox.innerHTML = "";
-  resultsBox.classList.add("page-header__search-results--show");
-
-  results.forEach((result) => {
-    const resultsItem = document.createElement("div");
-    resultsItem.classList.add("component-details__result-item");
-    resultsItem.dataset.id = result.id;
-    resultsItem.dataset.parent = index;
-
-    resultsItem.addEventListener("click", (e) => {
-      const target = e.currentTarget;
-
-      showComponentDetails(target, dataParent);
-    });
-
-    resultsBox.append(resultsItem);
-
-    const resultsTitle = createTextElement("h3", "component-details__result-title", result.component);
-    resultsItem.append(resultsTitle);
-  });
-  }
-};
-
-search.addEventListener("input", (e) => {
-  let value = e.target.value;
-  performSearch(value);
-}); */
-
-/* const searchOnEnter = (e) => {
-  if (e.key === "Enter") {
-  }
-};
-
-search.addEventListener("keypress", searchOnEnter); */

@@ -85,11 +85,20 @@ main {
   --secondary-bg-color: #591ff9;
 
   --hover-color: #8558ff;
-
   --active-color: #3c008f;
   
+  --alert-default:#f0eaff;
+  --alert-error: #ffe0e0;
+  --alert-success: #e0ffe0;
+  --alert-warning: #fff4e0;
+
   --text-color: #ffffff;
+
   --border-color: #3c008f;
+  --alert-success-border: #2a8f2a;
+  --alert-error-border: #cc0000;
+  --alert-warning-border: #cc9900;
+  
 }
 
 footer {

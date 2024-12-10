@@ -5,31 +5,23 @@
     cursor: pointer;
 }
 
-.button--primary {
+.button--default {
     background: var(--secondary-bg-color);
     color: var(--secondary-color);
 } 
 
-.button--primary:hover {
+
+.button--hover, .button--default:hover  {
     background: var(--hover-color);
     color: var(--text-color);
 }
 
-.button--secondary {
+.button--active, .button--default:active {
     padding: 8px 12px;
     border-radius: 8px;
-    background: var(--secondary-color);
-    color: var(--secondary-bg-color);
-    border: 1px solid var(--border-color);
-}
-
-.button--secondary:hover {
-    background: var(--hover-color);
-    color: var(--secondary-color);
-}
-
-.button--primary:active, .button--secondary:active {
     background: var(--active-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
 }
 
 .button--disabled {

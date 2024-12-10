@@ -8,12 +8,14 @@
 
 }
 
-.input--primary:focus {
+.input--default:focus, 
+.input--focus {
     border: 2px solid var(--border-color);
     color:  var(--border-color);
 }
 
-.input--secondary {    
+.input--hover, 
+.input--default:hover {    
     background-color: var(--primary-color);
     border:  2px solid var(--primary-color);
     color: var(--text-color);

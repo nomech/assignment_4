@@ -5,29 +5,27 @@
   padding: 8px 12px;
   align-items: center;
   border-radius: 16px;
+
 }
+
 
 .alert__icon {
-  width: 22px;
-  height: 22px;
+  margin-right: 8px;
+  width: 16px;
+  height: 16px;
 }
 
-.alert--primary {
-    border: 2px solid var(--primary-color);
+.alert--default {
+  background: var(--alert-default);
+  border: 2px solid var(--border-color);
 }
 
-.alert--primary > .alert__icon {
-  fill: var(--primary-color);
+.alert--success {
+  background: var(--alert-success);
+  border: 2px solid var(--alert-success-border);
 }
 
-.alert--secondary {
-    background-color: var(--primary-color);
-}
-
-.alert--secondary > .alert__icon {
-  fill: var(--secondary-color);
-}
-
-.alert--secondary > .alert__text {
-  color: var(--text-color);
+.alert--error {
+  background: var(--alert-error);
+  border: 2px solid var(--alert-error-border);
 }
