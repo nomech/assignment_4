@@ -12,6 +12,9 @@ A responsive SPA like website showcasing a design system.
 
 ## Description
 
+This project showscases a limited design system, it includes the following components: Buttons, Dropdown, Cards, Checkbox, navbars, Alerts, Inputs and Badges.
+
+There is also a section for Layputs, but currently there is no data for this, it acts purly as a placeholder.
 
 
 ## Technologies Used
