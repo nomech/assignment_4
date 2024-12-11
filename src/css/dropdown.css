@@ -1,4 +1,4 @@
-.dropdown{
+.dropdown {
   cursor: pointer;
 }
 
@@ -17,12 +17,26 @@
   border-radius: 8px;
 }
 
-.dropdown--hover, .dropdown--default:hover {
+.dropdown--hover,
+.dropdown--default:hover {
   background: var(--hover-color);
   color: var(--text-color);
 }
 
-.dropdown--active, .dropdown--default:active {
+.dropdown--active,
+.dropdown--default:active {
   background: var(--active-color);
   color: var(--text-color);
+}
+
+.dropdown--active,
+.dropdown--hover {
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .dropdown--small,
+  .dropdown--medium {
+    display: none;
+  }
 }

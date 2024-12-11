@@ -161,7 +161,8 @@ export const data = [
           {
             type: "Default",
             description: "",
-            code: `<input class="checkbox checkbox--default" type="checkbox" id="scales" name="scales" checked />`,
+            code: `<input class="checkbox checkbox--default" type="checkbox"
+                  id="checkbox" name="checkbox" checked />`,
             text: "Default checkbox",
             sizes: ["medium"],
           },
@@ -201,9 +202,21 @@ export const data = [
             code: `
 <nav class="nav-component nav-component">
   <ul class="nav-component__list">
-    <li class="nav-component__item nav-component__item--default"><a href="#" class="nav-component__link">Home</a></li>
-    <li class="nav-component__item nav-component__item--default"><a href="#" class="nav-component__link">About</a></li>
-    <li class="nav-component__item nav-component__item--default"><a href="#" class="nav-component__link">Contact</a></li>
+    <li class="nav-component__item nav-component__item--default">
+      <a href="#" class="nav-component__link">
+        Home
+      </a>
+    </li>
+    <li class="nav-component__item nav-component__item--default">
+      <a href="#" class="nav-component__link">
+        About
+      </a>
+    </li>
+    <li class="nav-component__item nav-component__item--default">
+      <a href="#" class="nav-component__link">
+        Contact
+      </a>
+    </li>
   </ul>
 </nav>`,
             sizes: ["medium"],
@@ -348,35 +361,35 @@ export const data = [
             type: "Default",
             description: "The default badge for general use.",
             code: `<div class="badge badge--default">Default</div>`,
-            sizes: ["large", "medium"],
+            sizes: ["medium", "small"],
           },
           {
             type: "Success",
             description:
               "The success badge indicates a successful operation or status.",
             code: `<div class="badge badge--success">Success</div>`,
-            sizes: ["large", "medium"],
+            sizes: ["medium", "small"],
           },
           {
             type: "Error",
             description:
               "The error badge indicates an error or critical issue.",
             code: `<div class="badge badge--error">Error</div>`,
-            sizes: ["large", "medium"],
+            sizes: ["medium", "small"],
           },
           {
             type: "Warning",
             description:
               "The warning badge indicates a potential issue or alert.",
             code: `<div class="badge badge--warning">Warning</div>`,
-            sizes: ["large", "medium"],
+            sizes: ["medium", "small"],
           },
           {
             type: "Disabled",
             description:
               "The disabled badge is used for inactive or unavailable items.",
             code: `<div class="badge badge--disabled">Disabled</div>`,
-            sizes: ["large", "medium"],
+            sizes: ["medium", "small"],
           },
         ],
       },

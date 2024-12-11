@@ -1,56 +1,63 @@
 .button {
-    border: unset;
-    padding: 8px 12px;
-    border-radius: 8px;
-    cursor: pointer;
+  border: unset;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 .button--default {
-    background: var(--secondary-bg-color);
-    color: var(--secondary-color);
-} 
-
-
-.button--hover, .button--default:hover  {
-    background: var(--hover-color);
-    color: var(--text-color);
+  background: var(--secondary-bg-color);
+  color: var(--secondary-color);
 }
 
-.button--active, .button--default:active {
-    padding: 8px 12px;
-    border-radius: 8px;
-    background: var(--active-color);
-    color: var(--text-color);
-    border: 1px solid var(--border-color);
+.button--hover,
+.button--default:hover {
+  background: var(--hover-color);
+  color: var(--text-color);
+}
+
+.button--active,
+.button--default:active {
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--active-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
 }
 
 .button--disabled {
-    padding: 8px 12px;
-    border-radius: 8px;
-    background: #e8e8e8;
-    color: #8f8f8f;
-    border: 1px solid var(--border-color);
-    cursor: not-allowed;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #e8e8e8;
+  color: #8f8f8f;
+  border: 1px solid var(--border-color);
+  cursor: not-allowed;
 }
 
 .button--small {
-    width: 85px;
-    height: 30px;
-    padding: 8px 12px;
-    border-radius: 8px;
+  width: 85px;
+  height: 30px;
+  padding: 8px 12px;
+  border-radius: 8px;
 }
 
 .button--medium {
-    width: 100px;
-    height: 40px;
-    padding: 12px 16px;
-    border-radius: 8px;
+  width: 100px;
+  height: 40px;
+  padding: 12px 16px;
+  border-radius: 8px;
 }
 
 .button--large {
-    width: 150px;
-    height: 50px;
-    padding: 16px 24px;
-    border-radius: 8px;
+  width: 150px;
+  height: 50px;
+  padding: 16px 24px;
+  border-radius: 8px;
 }
 
+@media (max-width: 768px) {
+  .button--small,
+  .button--medium {
+    display: none;
+  }
+}

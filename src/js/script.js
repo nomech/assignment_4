@@ -21,7 +21,6 @@ let initialized = false;
 window.addEventListener("DOMContentLoaded", () => {
   initializeDOM();
   logo.addEventListener("click", reinitializeDOM);
-  search.addEventListener("blur", onUnfocusSearch);
   drawerButton.addEventListener("click", triggerDrawer);
 });
 
@@ -88,15 +87,11 @@ const createComponentDetails = (component) => {
   canvas.innerText = "";
 
   // Create the component details container
-  const componentDetails = createDivElement("component-details__component-details");
+  const componentDetails = createDivElement("component-details__details");
   canvas.append(componentDetails);
 
   // Create the component title
-  const componentTitle = createTextElement(
-    "h3",
-    "component-details__component-title",
-    component.component
-  );
+  const componentTitle = createTextElement("h3", "component-details__component-title", component.component);
 
   // Create the component description
   const componentDescription = createTextElement(

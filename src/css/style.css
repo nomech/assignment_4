@@ -78,6 +78,16 @@ main {
 }
 
 :root {
+
+  --xsmall: 0.5rem;
+  --small: 1rem;
+  --medium: 1.5rem;
+  --large: 2rem;
+  --xlarge: 3rem;
+  --xxlarge: 4rem;
+  
+
+  
   --primary-color:#3c008f;
   --primary-bg-color: #05024f;
 

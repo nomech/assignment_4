@@ -42,3 +42,10 @@
     width: 300px;
     height: 150px;
 }
+
+
+@media (max-width: 768px) {
+    .card--small {
+      display: none;
+    }
+  }
