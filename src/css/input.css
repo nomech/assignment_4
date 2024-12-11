@@ -1,10 +1,10 @@
 .input {
   width: 100%;
   border: 2px solid #000000;
-  border-radius: 16px;
+  border-radius: var(--small);
   outline: none;
   font-size: 16px;
-  padding: 8px 12px;
+  padding: var(--xsmall) var(--small);
 }
 
 .input--default:focus,

@@ -1,7 +1,7 @@
 .nav-component {
   width: 800px;
   background-color: var(--secondary-bg-color);
-  border-radius: 16px;
+  border-radius: var(--small);
 }
 
 .nav-component__list {
@@ -14,20 +14,20 @@
   display: flex;
   justify-content: center;
   flex-grow: 1;
-  padding: 12px;
+  padding: var(--small);
   cursor: pointer;
 }
 
 .nav-component__item--default:hover,
 .nav-component__item--hover {
   background-color: var(--hover-color);
-  border-radius: 16px;
+  border-radius: var(--small);
 }
 
 .nav-component__item--default:active,
 .nav-component__item--active {
   background-color: var(--active-color);
-  border-radius: 16px;
+  border-radius: var(--small);
 }
 
 .nav-component__link {
@@ -54,7 +54,7 @@
   }
 
   .nav-component__item {
-    padding: 6px;
+    padding: var(--xsmall);
   }
   .nav-component__link {
     font-size: 12px;

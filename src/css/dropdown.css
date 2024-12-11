@@ -1,20 +1,18 @@
 .dropdown {
   cursor: pointer;
+  border-radius: 8px;
 }
 
 .dropdown--small {
-  padding: 8px 12px;
-  border-radius: 8px;
+  padding: var(--xsmall) var(--small);
 }
 
 .dropdown--medium {
-  padding: 12px 16px;
-  border-radius: 8px;
+  padding: var(--small);
 }
 
 .dropdown--large {
-  padding: 16px 24px;
-  border-radius: 8px;
+  padding: var(--medium) var(--medium);  
 }
 
 .dropdown--hover,

@@ -1,7 +1,7 @@
 .button {
   border: unset;
-  padding: 8px 12px;
-  border-radius: 8px;
+  padding: var(--xsmall) var(--small);
+  border-radius: var(--xsmall);
   cursor: pointer;
 }
 
@@ -18,41 +18,25 @@
 
 .button--active,
 .button--default:active {
-  padding: 8px 12px;
-  border-radius: 8px;
   background: var(--active-color);
   color: var(--text-color);
   border: 1px solid var(--border-color);
 }
 
 .button--disabled {
-  padding: 8px 12px;
-  border-radius: 8px;
-  background: #e8e8e8;
-  color: #8f8f8f;
   border: 1px solid var(--border-color);
   cursor: not-allowed;
 }
 
-.button--small {
-  width: 85px;
-  height: 30px;
-  padding: 8px 12px;
-  border-radius: 8px;
-}
-
 .button--medium {
-  width: 100px;
-  height: 40px;
-  padding: 12px 16px;
-  border-radius: 8px;
+  width: calc(var(--xxlarge) * 2);
+  height: calc(var(--small) * 3);
 }
 
 .button--large {
   width: 150px;
-  height: 50px;
-  padding: 16px 24px;
-  border-radius: 8px;
+  height: var(--xxlarge);
+  padding: var(--small) var(--medium);
 }
 
 @media (max-width: 768px) {

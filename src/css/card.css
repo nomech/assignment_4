@@ -1,5 +1,5 @@
 .card__title-box {
-    padding: 6px;
+    padding: var(--xsmall);
     background-color: var(--secondary-bg-color);
     color: var(--text-color);
     border-radius: 4px 4px 0 0;
@@ -30,7 +30,7 @@
 
 
 .card__content{
-    padding: 8px;
+    padding: var(--xsmall);
 }
 
 .card--small {

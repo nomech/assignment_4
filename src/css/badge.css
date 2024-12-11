@@ -1,19 +1,18 @@
 .badge {
-  padding: 4px 8px;
   font-size: 12px;
   font-weight: 700;
-  border-radius: 8px;
+  border-radius: var(--xsmall);
   text-align: center;
   background-color: var(--alert-default);
 }
 
 .badge--medium {
-  padding: 8px 16px;
+  padding: var(--xsmall) var(--small);
   font-size: 16px;
 }
 
 .badge--small {
-  padding: 4px 8px;
+  padding: calc(var(--xsmall) / 2) var(--xsmall);
   font-size: 12px;
 }
 

@@ -1,18 +1,18 @@
 .alert {
   display: flex;
   width: 100%;
-  gap: 12px;
-  padding: 8px 12px;
+  gap: var(--small);
+  padding: var(--xsmall) var(--small);
   align-items: center;
-  border-radius: 16px;
+  border-radius: var(--small);
 
 }
 
 
 .alert__icon {
   margin-right: 8px;
-  width: 16px;
-  height: 16px;
+  width: var(--small);
+  height: var(--small);
 }
 
 .alert--default {

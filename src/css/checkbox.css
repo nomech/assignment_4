@@ -1,7 +1,7 @@
 .checkbox {
   appearance: none;
-  width: 16px;
-  height: 16px;
+  width: var(--small);
+  height: var(--small);
   border: 2px solid var(--border-color);
   border-radius: 4px;
   cursor: pointer;
@@ -14,16 +14,14 @@
   background-color: var(--active-color);
   background-image: url("data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 448 512%27><path fill=%27%23ffffff%27 d=%27M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z%27/></svg>");
   background-position: center;
-  background-size: 12px 12px;
 }
 
-.checkbox--hover, .checkbox--default:hover {
+.checkbox--hover,
+.checkbox--default:hover {
   border-color: var(--hover-color);
 }
 
 .checkbox:disabled {
-  background: #f0f0f0;
-  border-color: #ddd;
+  border-color: var(--disabled);
   cursor: not-allowed;
 }
-
