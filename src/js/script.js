@@ -14,7 +14,6 @@ const elementsDOM = {
   details: document.querySelector(".component-details"),
 };
 
-
 let initialized = false;
 
 // Ensure that the DOM is fully loaded before running the script
@@ -37,7 +36,6 @@ const {
   details,
 } = elementsDOM;
 
-
 // Function to create a text element
 const createTextElement = (tag, className, text) => {
   const element = document.createElement(tag);
@@ -52,7 +50,6 @@ const createDivElement = (className) => {
   element.classList.add(className);
   return element;
 };
-
 
 // Function to collapse the components in the sidebar
 const collapseComponents = (e) => {
@@ -91,7 +88,11 @@ const createComponentDetails = (component) => {
   canvas.append(componentDetails);
 
   // Create the component title
-  const componentTitle = createTextElement("h3", "component-details__component-title", component.component);
+  const componentTitle = createTextElement(
+    "h3",
+    "component-details__component-title",
+    component.component
+  );
 
   // Create the component description
   const componentDescription = createTextElement(
@@ -102,7 +103,7 @@ const createComponentDetails = (component) => {
   componentDetails.append(componentTitle, componentDescription);
 
   // Create the component types
-  let codeGenerated = false; 
+  let codeGenerated = false;
 
   // Loop through the types of the component
   component.types.forEach((type) => {
@@ -111,12 +112,20 @@ const createComponentDetails = (component) => {
     componentDetails.append(typeContainer);
 
     // Create the type title and description
-    const typeTitle = createTextElement("h4", "component-details__type-title", type.type);
+    const typeTitle = createTextElement(
+      "h4",
+      "component-details__type-title",
+      type.type
+    );
 
     // Create the type description
-    const typeDescription = createTextElement("p", "component-details__type-description", type.description);
-    typeContainer.append(typeTitle, typeDescription)
-    
+    const typeDescription = createTextElement(
+      "p",
+      "component-details__type-description",
+      type.description
+    );
+    typeContainer.append(typeTitle, typeDescription);
+
     // Create the preformatted code block if it has not been generated
     if (!codeGenerated) {
       codeGenerated = true;
@@ -132,7 +141,7 @@ const createComponentDetails = (component) => {
       // Add the code to the code element
       typeCode.textContent = type.code;
       preformatted.append(typeCode);
-      typeContainer.append(preformatted)
+      typeContainer.append(preformatted);
     }
 
     // Create the demo container
@@ -152,16 +161,15 @@ const createComponentDetails = (component) => {
 
     //Loop through the sizes of the component and create the demo elements for each size using the DOMParser API
     type.sizes.forEach((size) => {
-
       // Create the demo element using the DOMParser API
       const parser = new DOMParser();
-      
+
       // Parse the code to create the demo element
-      const doc = parser.parseFromString(code, 'text/html');
+      const doc = parser.parseFromString(code, "text/html");
 
       // Get the first element of the body
       const element = doc.body.firstElementChild;
-      
+
       // Add the block and size classes to the demo element
       element.classList.add(`${block}--${size}`);
       demoContainer.appendChild(element);
@@ -193,7 +201,6 @@ const createSubListItems = (parent, data, dataParent) => {
 
 // Function to create the list item
 const createListItem = (item, index) => {
-
   // Create the list item
   const listItem = document.createElement("li");
   listItem.classList.add("sidebar__item");
@@ -205,7 +212,6 @@ const createListItem = (item, index) => {
 
   // Create the item title
   const itemTitle = createTextElement("h3", "sidebar__title", item.title);
-
 
   // Create the chevron icon
   const chevron = document.createElement("img");
@@ -222,10 +228,8 @@ const createListItem = (item, index) => {
   // Append the title group and sublist to the list item
   listItem.append(titleGroup, subList);
 
-
   // Loop through the data of the item and create the sub list items
   item.data.forEach((component) => {
-
     // Create the sub list items
     createSubListItems(subList, component, index);
 
@@ -239,9 +243,14 @@ const createListItem = (item, index) => {
     });
   });
 
-  // Set the height of the sublist to the scroll height
-  subList.style.height = `${subList.scrollHeight}px`;
   titleGroup.addEventListener("click", collapseComponents);
+
+  // Set the height of the sublist to the scroll height on first render
+  //setTimeout is used to ensure that the height is set after the DOM has been rendered
+  
+  setTimeout(() => {
+    subList.style.height = `${subList.scrollHeight}px`;
+  }, 0);
 };
 
 // Function to initialize the DOM
@@ -249,7 +258,6 @@ const initializeDOM = () => {
   // Loop through the data and create the list items if the DOM has not been initialized
   data.forEach((item, index) => {
     if (!initialized) {
-
       // Create the list items
       createListItem(item, index);
     }
@@ -259,13 +267,15 @@ const initializeDOM = () => {
     canvas.classList.add("component-details__canvas");
 
     // Create the title
-    const title = createTextElement("h2", "component-details__category", item.title);
+    const title = createTextElement(
+      "h2",
+      "component-details__category",
+      item.title
+    );
     details.append(title, canvas);
-
 
     // Loop through the data of the item and create the component details
     item.data.forEach((element) => {
-
       // Create the component
       const component = document.createElement("div");
       component.classList.add("component-details__component");
@@ -283,8 +293,16 @@ const initializeDOM = () => {
       canvas.append(component);
 
       // Create the component title and description
-      const componentTitle = createTextElement("h3", "component-details__title", element.component);
-      const componentDescription = createTextElement("p", "component-details__description", element.description);
+      const componentTitle = createTextElement(
+        "h3",
+        "component-details__title",
+        element.component
+      );
+      const componentDescription = createTextElement(
+        "p",
+        "component-details__description",
+        element.description
+      );
 
       // Append the title and description to the component
       component.append(componentTitle, componentDescription);
