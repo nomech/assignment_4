@@ -148,3 +148,14 @@
       transform: translateX(0) rotate(180deg);
     }
   }
+
+  @media (max-width: 768px) {
+    .sidebar {
+      position: absolute;
+      width: 97%;
+      height: 100%;
+    }
+    .sidebar--retracted {
+      width: 10px;
+    }
+  }
